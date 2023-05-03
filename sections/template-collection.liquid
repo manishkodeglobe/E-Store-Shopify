@@ -20,25 +20,14 @@
 
   <div class="filters flex justify-between">
 
-    <div class="min_and_max_amount_functionality">
-
-
-
-      <p>Tags:
-        {% for tag in collections.all_tags %}
-          <span>
-            <a href="/collections/all/{{ tag | handleize }}">{{ tag }}</a>
-          </span>
-        {% endfor %}
-      </p>
-
-
-
-    </div>
+    <div class="min_and_max_amount_functionality"></div>
 
 
 
     <div class="flex justify-center items-center">
+      <div class="filter_heading">
+        <h1>Sort By:</h1>
+      </div>
       <select
         name="sorting"
         id="sort_by"
