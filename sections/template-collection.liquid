@@ -20,12 +20,14 @@
 
   <div class="filters flex justify-between">
 
-    <div class="min_and_max_amount_functionality"></div>
+    <div class="min_and_max_amount_functionality filter_availablity_and_price">
+      <h1 class="mx-4">Filter:</h1>
+    </div>
 
 
 
     <div class="flex justify-center items-center">
-      <div class="filter_heading">
+      <div class="filter_heading mx-4">
         <h1>Sort By:</h1>
       </div>
       <select
@@ -34,12 +36,18 @@
         class="form-select border px-4 py-2 w-25"
         onchange="location = this.value;">
 
-        <option value="{{ collection.url }}?sort_by=title-ascending">Name: A to Z</option>
-        <option value="{{ collection.url }}?sort_by=title-descending">Name: Z to A</option>
+        <option value="{{ collection.url }}?sort_by=title-ascending">Alphabetically: A to Z</option>
+        <option value="{{ collection.url }}?sort_by=title-descending">Alphabetically: Z to A</option>
         <option value="{{ collection.url }}?sort_by=price-ascending">Price: Low to High</option>
         <option value="{{ collection.url }}?sort_by=price-descending">Price: High to Low</option>
+        <option value="{{ collection.url }}?sort_by=date-ascending">Date: Old to New</option>
+        <option value="{{ collection.url }}?sort_by=date-descending">Price: New to Old</option>
+
         <!-- Add additional sort options here -->
       </select>
+      <div class="all_product_count mx-4">
+        <h1>{{ collection.products_count }}</h1>
+      </div>
     </div>
   </div>
 
