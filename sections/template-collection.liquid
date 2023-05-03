@@ -23,15 +23,15 @@
     <div class="min_and_max_amount_functionality">
 
 
-      {% if collection.all_tags.size > 0 %}
-        <p>Tags:
-          {% for tag in collections.all_tags %}
-            <span>
-              <a href="/collections/all/{{ tag | handleize }}">{{ tag }}</a>
-            </span>
-          {% endfor %}
-        </p>
-      {% endif %}
+
+      <p>Tags:
+        {% for tag in collections.all_tags %}
+          <span>
+            <a href="/collections/all/{{ tag | handleize }}">{{ tag }}</a>
+          </span>
+        {% endfor %}
+      </p>
+
 
 
     </div>
