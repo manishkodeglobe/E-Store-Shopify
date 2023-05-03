@@ -1,0 +1,9 @@
+{
+
+    "sections":{
+        "list_collection_id":{
+            "type":"template-list-collections"
+        }
+    },
+    "order":["list_collection_id"]
+}

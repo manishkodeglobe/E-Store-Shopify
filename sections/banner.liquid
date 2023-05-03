@@ -1,0 +1,62 @@
+<div class="flexslider  ">
+  <ul class="slides flex items-center">
+
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'image' %}
+        <li>
+          {% if block.settings.image %}
+
+            <img
+              src="{{ block.settings.image | image_url }}"
+              width="full"
+              height="full"
+              loading="lazy" />
+          {% else %}
+            <div class="flex items-center justify-center">
+              <div>
+                <h1 class="text-3xl font-bold py-80">No Images Added in Crauosal</h1>
+              </div>
+            </div>
+
+          {% endif %}
+
+        </li>
+
+
+
+      {% endcase %}
+
+    {% endfor %}
+
+
+
+  </ul>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "BannerHomePage",
+
+    "blocks": [
+      {
+        "type": "image",
+        "name": "image_block",
+        "limit": 6,
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Banner Slides",
+            "id": "image"
+          }
+        ]
+      }
+    ]
+
+
+
+  }
+{% endschema %}

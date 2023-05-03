@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 404 page css  */
+.template404 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Footter css */
+
+.footer_section {
+  padding: 100px 0;
+}
+
+footer {
+  background-color: #ebeae6;
+}
+.footer_heading_title {
+  padding-bottom: 20px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 150%;
+  /* identical to box height, or 27px */
+  letter-spacing: 1px;
+  color: #2d2d2d;
+}
+ul.footer_links_menu {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  letter-spacing: 1px;
+  color: #2d2d2d;
+}
+
+ul.footer_links_menu li {
+  padding-bottom: 10px;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 72vh; */
+  text-transform: capitalize;
+  font-size: 96px;
+  font-family: cursive;
+}
+
+.e-mailling_paragraph {
+  max-width: 80%;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 143%;
+
+  letter-spacing: 1px;
+  padding-bottom: 40px;
+  color: #2d2d2d;
+}
+
+/* flexslider */
+
+.flexslider .slides img {
+  width: 100% !important;
+  height: 800px !important;
+  object-fit: cover;
+}
+
+.flexslider {
+  margin: 0 !important;
+  overflow: hidden;
+}
+
+.flexslider {
+  border: 0px !important;
+}
+
+.flex-control-nav {
+  bottom: 0px !important;
+}
+
+.form_wrapper {
+  border-bottom: 2px solid #6660607a;
+  width: 54%;
+}
+
+@media (max-width: 992px) {
+  .form_wrapper {
+    width: 100%;
+  }
+}
+
+.ig_link {
+  opacity: 0.7;
+  color: #2d2d2d;
+}
+
+.privacy_policy_text_typo {
+  color: #2d2d2d;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+::placeholder {
+  color: #2d2d2d;
+  opacity: 0.7;
+}
+
+/* curser on hover */
+
+.swiper {
+  /* width:1400px; */
+  /* height: 300px; */
+}
+
+@media (max-width: 762px) {
+  .swiper-button-prev {
+    left: 78% !important;
+  }
+}
+.swiper-button-prev {
+  top: 0 !important;
+  position: relative !important;
+
+  margin: 0 !important;
+  left: 89% !important;
+}
+.swiper-button-next {
+  top: 0 !important;
+  margin: 0 !important;
+}
+
+.slider_title_home_page {
+  margin: 80px 0 10px;
+  max-width: 34%;
+
+  font-weight: lighter;
+}
+
+/* n */
+
+/* .list_collections_section {
+  background-color: #f7f7f5;
+} */
+.heading-withsmall-slider {
+  padding: 150px 0;
+}
+
+.image_width_logos {
+  background-color: #f7f7f5;
+}
+
+.heaing_small.text-center small {
+  height: 40px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 200%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #2d2d2d;
+}
+
+.heaing_small h1 {
+  font-family: "FreightBig Pro";
+  font-style: italic;
+  max-width: 52%;
+  margin: auto;
+  font-weight: 300;
+  font-size: 54px;
+  line-height: 100%;
+  letter-spacing: -1px;
+  text-transform: capitalize;
+  color: #2d2d2d;
+  padding: 50px 0;
+}
+
+.bg-image-with-text {
+  background-color: #ebeae6;
+}
+
+.image-with_text_headings.text-center {
+  margin: auto;
+  max-width: 35%;
+  padding: 100px 0;
+}
+
+.product_image_width {
+  height: 290px;
+}
+
+/* grid */
+
+.collection-image_directions.template--18810172178736__list-collections-1 img {
+  margin-left: auto;
+}
+
+.collection-image_directions.template--18810172178736__list-collections-3 img {
+  margin-left: auto;
+}
+
+.collection-image_directions.template--18810172178736__list-collections-5 img {
+  margin-left: auto;
+}
+
+/* custome newsletter */
+
+.sib-form {
+  padding: 0px !important;
+}
+
+div#sib-container {
+  padding: 0px !important;
+}
+
+#sib-form {
+  display: flex;
+}
+
+.sib-input.sib-form-block {
+  padding: 0px;
+}
+
+.news_letter_button {
+}
+
+.news_letter_input {
+}
+.entry__field {
+  margin: 0px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+form#sib-form {
+  width: 70%;
+  border-bottom: 1px solid #80808047;
+}
+
+div#success-message {
+  width: 70%;
+}
+div#error-message {
+  width: 70%;
+}
+
+input.email_input_homepage {
+  font-size: 20px;
+  padding: 6px 0;
+  background: transparent;
+}
+.submit_input_homepage {
+  font-size: 20px;
+  cursor: pointer;
+  background: transparent;
+}
+
+button.submit_input_homepage {
+  border-bottom: 1px solid #80808047;
+}
+
+.sib-form-block__button {
+  padding: 8px 10px !important;
+}
+
+/* PreDictive Search bar  */

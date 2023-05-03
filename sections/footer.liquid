@@ -1,0 +1,102 @@
+<footer>
+  <section class="footer_section">
+    <div class="container mx-auto">
+      <div class="md:flex">
+        <div class="w-1/2">
+          <p class="e-mailling_paragraph">{{ section.settings.footer_form_paragraph }}</p>
+          <div class="NewsLetter_form">
+            {% comment %} <div class="form_wrapper ">
+            <input
+            class="email_input_homepage"
+            type="email"
+            placeholder="Email">
+            <input
+            class="submit_input_homepage"
+            type="submit"
+            value="JOIN">
+            </div> {% endcomment %}
+            {% render 'newsletter' %}
+          </div>
+        </div>
+        <div class="w-1/3">
+          <h1 class="footer_heading_title">Shop</h1>
+          <ul class="footer_links_menu">
+            {% for link in linklists.shop-menu-links.links %}
+              <li>
+                <a href="{{ link.url }}">
+                  {{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="w-1/3">
+          <h1 class="footer_heading_title">Company</h1>
+          <ul class="footer_links_menu">
+            {% for link in linklists.footer.links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="w-1/3">
+          <h1 class="footer_heading_title">Company</h1>
+          <ul class="footer_links_menu">
+            {% for link in linklists.footer-info-links.links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      {% comment %} social Media Links And Copy rIGHTS {% endcomment %}
+      <div class="md:flex pt-9">
+        <div class="w-1/3 ">
+          <div class="flex social_media_links_wrapper">
+            <div class="ig_link mx-3">FB</div>
+            <div class="ig_link mx-3">IG</div>
+            <div class="ig_link mx-3">TW</div>
+          </div>
+        </div>
+        <div class="w-1/2 flex justify-between privacy_policy_text_typo">
+          <div class=" w-1/1 coppyRightText">
+            <p>&copy; {{ 'now' | date: '%Y' }}
+              {{ section.settings.copyRight_Message }}</p>
+          </div>
+
+          <div class="w-1/1">PRIVACY POLICY</div>
+          <div class="w-1/1">TERMS OF USES</div>
+
+        </div>
+
+      </div>
+      {% comment %} end media links {% endcomment %}
+
+    </div>
+  </section>
+</footer>
+
+
+{% schema %}
+  {
+    "name": "Footer Texts",
+    "settings": [
+      {
+        "type": "text",
+        "id": "footer_form_paragraph",
+        "label": "footer form Heading",
+        "default": "Sign up For Early Access on New Releases and Save 10% on Your First Order"
+
+      }, {
+        "type": "text",
+        "id": "copyRight_Message",
+        "label": "copyright Message",
+        "default": "UNHIDE. ALL RIGHTS RESERVED"
+
+      }
+
+    ]
+  }
+{% endschema %}

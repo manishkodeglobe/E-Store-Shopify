@@ -1,0 +1,12 @@
+{
+    "name": "template title 404",
+    "wrapper": "div.template404",
+  
+    "sections": {
+        "uniqueid101":{
+           "type":"template-404"
+        }
+    },
+    "order": ["uniqueid101"]
+
+}

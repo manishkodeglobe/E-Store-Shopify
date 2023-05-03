@@ -1,0 +1,62 @@
+<div class="container mx-auto">
+  <div class="my-9 slider_title_home_page font-light">
+    <span class="md:text-sm text-xl font-bold">Trending</span>
+    <h1 class="text-6xl font-light">{{ section.settings.title }}</h1>
+  </div>
+{% comment %} slider {% endcomment %}
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+  {% for product in section.settings.featured_collection.products limit: section.settings.number_of_product_show %}
+    <div class="swiper-slide">
+      {% render 'product-card', product_product: product %}
+    </div>
+  {% endfor %}
+  </div>
+
+  </div>
+</div>
+<div class="flex feaured_collection_back_buttons justify-center uppercase font-bold my-9">
+  <a href="{{ collection.url }}" class="px-5 py-4 mx-3"  >Shop Trending Clothes</a>
+  <a href="{{ collection.url }}" class="px-5 py-4 mx-3 bg-slate-950   text-white" >Shop Trending Clothes</a>
+</div>
+</div>
+</div>
+  {% comment %} end {% endcomment %}
+
+</div>
+{% schema %}
+  {
+    "name": "Featured Collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "title",
+        "default": "Featured Collection"
+      }, {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "Featured Collection"
+      },
+      {
+        "type":"range",
+        "id":"number_of_product_show",
+        "label": "number of product show",
+        "default": 6,
+        "min": 6,
+        "max": 12,
+        "step": 1
+
+      } 
+    ],
+    "presets": [
+      {
+        "name": "Featured Collection"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,88 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="Back_to_Collection_page text-center p-3">
+    <a href="{{ routes.collections_url }}" class="text-base text-gray-400 hover:text-gray-900">Go Back To CollectionS</a>
+  </div>
+
+  <!-- Creatting Filter For collections -->
+
+  <script>
+    document.getElementById("sort_by").addEventListener('change', (event) => {
+
+      var url = new URL(window.location.href);
+      url.searchParams.set("sort_by", event.currentTarget.value);
+
+      window.location = url.href;
+
+      alert(url)
+
+    })
+  </script>
+
+  <div class="filters flex justify-between">
+
+    <div class="min_and_max_amount_functionality">
+
+
+      {% if collection.all_tags.size > 0 %}
+        <p>Tags:
+          {% for tag in collections.all_tags %}
+            <span>
+              <a href="/collections/all/{{ tag | handleize }}">{{ tag }}</a>
+            </span>
+          {% endfor %}
+        </p>
+      {% endif %}
+
+
+    </div>
+
+
+
+    <div class="flex justify-center items-center">
+      <select
+        name="sorting"
+        id="sort_by"
+        class="form-select border px-4 py-2 w-25"
+        onchange="location = this.value;">
+        <option value="{{ collection.url }}">Sort By</option>
+        <option value="{{ collection.url }}?sort_by=title-ascending">Name: A to Z</option>
+        <option value="{{ collection.url }}?sort_by=title-descending">Name: Z to A</option>
+        <option value="{{ collection.url }}?sort_by=price-ascending">Price: Low to High</option>
+        <option value="{{ collection.url }}?sort_by=price-descending">Price: High to Low</option>
+        <!-- Add additional sort options here -->
+      </select>
+    </div>
+  </div>
+
+  <!-- Creatting Filter For collections -->
+
+  {% paginate collection.products by section.settings.number_of_products_per_page %}
+    <h1 class="text-5xl text-center py-4 mb-8">{{ collection.title }}</h1>
+    <div class="max-w-6xl mx-auto">
+      <div class="grid   sm:grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4">
+        {% for product in collection.products %}
+          {% render 'product-card', product_product: product %}
+
+        {% else %}
+          <div class="font-bold flex justify-center items-center">
+            <h1>There Are No Product In Your Collection</h1>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endpaginate %}
+</div>
+
+{% schema %}
+  {
+    "name": "template collection",
+    "settings": [
+      {
+        "type": "number",
+        "id": "number_of_products_per_page",
+        "default": 6,
+        "label": "number of products per page"
+      }
+    ]
+  }
+{% endschema %}

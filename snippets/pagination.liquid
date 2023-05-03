@@ -1,0 +1,33 @@
+{% if pagination.pages > 0 %}
+
+  <nav role="navigation" class="flex items-center justify-center">
+
+    {% comment %} for  previous Button show {% endcomment %}
+    {% if pagination.previous %}
+      <a href="{{ pagination.previous.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ pagination.previous.title }}</a>
+    {% endif %}
+
+
+    {% comment %} for show pagination numbers {% endcomment %}
+    {% for part in pagination.parts %}
+
+      {% if part.is_link %}
+        <a href="{{ part.url }}" class="active first-line: border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ part.title }}</a>
+      {% else %}
+        <span class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ part.title }}</span>
+      {% endif %}
+    {% endfor %}
+
+
+    {% comment %} for Next Button show {% endcomment %}
+    {% if pagination.next %}
+      <a href="{{ pagination.next.url }}" class="border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medium">{{ pagination.next.title }}</a>
+    {% endif %}
+
+    {% comment %} for show all pages number {% endcomment %}
+
+
+
+  </nav>
+
+{% endif %}

@@ -1,0 +1,31 @@
+<a href="https://api.whatsapp.com/send?text={{ shop.url }}{{ product.url | append: share_permalink }}" class="px-3 py-5 mx-2 my-10">
+  {% render 'WhatsApp' %}
+</a>
+<a href="http://www.twitter.com/share?url={{ shop.url }}{{ product.url | append: share_permalink }}" class="px-3 py-5 mx-2 my-10">
+  {% render 'twitter' %}
+</a>
+<a href="http://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url | append: share_permalink }}" class="px-3 py-5 mx-2 my-10">
+  {% render 'facebook' %}
+</a>
+
+
+
+<input
+  class="hidden"
+  type="text"
+  value="{{ shop.url }}{{ product.url }}"
+  id="myInput">
+<button
+  class="px-3 py-5 mx-2 my-10"
+  type="button"
+  title="Copy Link"
+  onclick="myFunction()">{% render 'copy-clipboard' %} Copy</button>
+
+<script>
+  function myFunction() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    navigator.clipboard.writeText(copyText.value);
+
+  }
+</script>

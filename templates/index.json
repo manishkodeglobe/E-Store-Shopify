@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "banner": {
+      "type": "banner",
+      "blocks": {
+        "image":{ "type": "image"}
+      },"block_order": ["image"]
+ 
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Collection",
+        "featured_collection": "all",
+        "number_of_product_show": 6
+      }
+    },
+    "image-n-text": {
+      "type": "image-with-text",
+      "settings": {
+        "title": "SMART & ACCESSIBLE WARDROBE THAT YOU CAN WEAR AND CURATE OVER TIME",
+        "subtitle": "— ioki.makoi"
+      }
+    },
+    "list-collections": {
+      "type": "template-list-collections",
+      "settings": {
+        "title": "Collections",
+        "collection_lists": [
+
+        ]
+      }
+    },
+
+    "SpecificList-collection-prd":{
+      "type": "HomePage-specific-collection-craousal",
+      "settings": {
+
+      }
+    },
+
+    "homepage-specific-collection-2":{
+      "type":"homepage-specific-collection-2"
+    },
+    "second-level-banner": {
+      "type": "second-level-banner",
+      "settings": {
+        "title": "In the press",
+        "description": "“Move over Prada: Millennials can’t get enough of Confiance”"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "featured-collection",
+    "image-n-text",
+    "SpecificList-collection-prd",
+    "homepage-specific-collection-2",
+    "list-collections",
+    "second-level-banner"
+  ]
+}

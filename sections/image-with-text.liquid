@@ -1,0 +1,48 @@
+<div class="Image_with_text py-9">
+  <div class="container mx-auto">
+
+    <div class="image-with_text_headings text-center">
+      <h1 class="font-bold  text-2xl  mb-4">{{ section.settings.title }}</h1>
+      <span class=" ">{{ section.settings.subtitle }}</span>
+    </div>
+
+    <div class="md:flex block     bg-image-with-text">
+      <div class="md:w-1/2 ">
+        <img
+          class="w-full h-full"
+          src="{{ 'img-with-text-1.png' | asset_url }}"
+          width="full"
+          height="full"
+          loading="lazy">
+      </div>
+      <div class="md:w-1/2 flex items-center justify-center ">
+        <img
+          class="md:p-0 p-5"
+          src="{{ 'image-with-text-2.png' | asset_url }}"
+          width="full"
+          height="full"
+          loading="lazy">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Image with text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "title",
+        "default": "SMART & ACCESSIBLE WARDROBE THAT YOU CAN WEAR AND CURATE OVER TIME"
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "subtitle",
+        "default": "— ioki.makoi"
+      }
+    ]
+  }
+{% endschema %}
