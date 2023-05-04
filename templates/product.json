@@ -55,7 +55,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "Other Collections",
-        "featured_collection": "frontpage",
+        "featured_collection": "bags",
         "number_of_product_show": 6
       }
     }
