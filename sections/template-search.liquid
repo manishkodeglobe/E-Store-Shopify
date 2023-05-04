@@ -1,20 +1,8 @@
- 
-
-
-
-
-
-
-
-
-
-
-
 <div class="container mx-auto">
   {% paginate search.results by 10 %}
     <h1 class="text-xl my-4 text-center">Search Results</h1>
 
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center my-10">
       <form
         action="{{ routes.search_url }}"
         method="get"
@@ -53,6 +41,17 @@
     {% endif %}
 
 
-    {% render 'pagination', pagination: paginate %}
+    {% render 'pagination', paginate: paginate %}
   {% endpaginate %}
 </div>
+
+
+
+{% comment %} new {% endcomment %}
+{% comment %} new {% endcomment %}
+{% comment %} new {% endcomment %}
+{% comment %} new {% endcomment %}
+{% comment %} new {% endcomment %}
+
+
+{% render 'autocomplete-search' %}

@@ -22,6 +22,12 @@
 
     <div class="min_and_max_amount_functionality filter_availablity_and_price">
       <h1 class="mx-4">Filter:</h1>
+
+
+      {% comment %} Show Products Categry {% endcomment %}
+
+
+
     </div>
 
 
@@ -30,6 +36,9 @@
       <div class="filter_heading mx-4">
         <h1>Sort By:</h1>
       </div>
+
+
+
       <select
         name="sorting"
         id="sort_by"
@@ -42,6 +51,7 @@
         <option value="{{ collection.url }}?sort_by=price-descending">Price: High to Low</option>
         <option value="{{ collection.url }}?sort_by=date-ascending">Date: Old to New</option>
         <option value="{{ collection.url }}?sort_by=date-descending">Date: New to Old</option>
+
 
 
         <!-- Add additional sort options here -->
