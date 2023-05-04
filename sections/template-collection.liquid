@@ -24,21 +24,15 @@
       <h1 class="mx-4">Filter:</h1>
 
 
-      {% comment %} Show Products Categry {% endcomment %}
-
-
 
     </div>
 
 
-
+    {% comment %} Shorting Filter {% endcomment %}
     <div class="flex justify-center items-center">
       <div class="filter_heading mx-4">
         <h1>Sort By:</h1>
       </div>
-
-
-
       <select
         name="sorting"
         id="sort_by"
@@ -49,8 +43,8 @@
         <option value="{{ collection.url }}?sort_by=title-descending">Alphabetically: Z to A</option>
         <option value="{{ collection.url }}?sort_by=price-ascending">Price: Low to High</option>
         <option value="{{ collection.url }}?sort_by=price-descending">Price: High to Low</option>
-        <option value="{{ collection.url }}?sort_by=date-ascending">Date: Old to New</option>
-        <option value="{{ collection.url }}?sort_by=date-descending">Date: New to Old</option>
+        <option value="{{ collection.url }}?sort_by=created-ascending">Date: Old to New</option>
+        <option value="{{ collection.url }}?sort_by=created-descending">Date: New to Old</option>
 
 
 
@@ -61,7 +55,7 @@
       </div>
     </div>
   </div>
-
+  {% comment %}End Shorting Filter {% endcomment %}
   <!-- Creatting Filter For collections -->
 
   {% paginate collection.products by section.settings.number_of_products_per_page %}
