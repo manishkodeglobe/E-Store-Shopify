@@ -1,12 +1,11 @@
 {
   "sections": {
+    
     "banner": {
       "type": "banner",
       "settings": {
 
       }
-  
- 
     },
     "featured-collection": {
       "type": "featured-collection",
