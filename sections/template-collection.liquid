@@ -3,25 +3,13 @@
     <a href="{{ routes.collections_url }}" class="text-base text-gray-400 hover:text-gray-900">Go Back To CollectionS</a>
   </div>
 
-  <!-- Creatting Filter For collections -->
-
-  <script>
-    document.getElementById("sort_by").addEventListener('change', (event) => {
-
-      var url = new URL(window.location.href);
-      url.searchParams.set("sort_by", event.currentTarget.value);
-
-      window.location = url.href;
-
-      alert(url)
-
-    })
-  </script>
+  <!-- Creatting Filters For collections -->
 
   <div class="filters flex justify-end">
 
 
-    {% comment %} Shorting Filter {% endcomment %}
+
+    {% comment %} Shorting Filter and avaliblity {% endcomment %}
     <div class="flex justify-end items-center">
       <div class="filter_heading mx-4">
         <h1>Sort By:</h1>
@@ -31,31 +19,28 @@
         id="sort_by"
         class="form-select border px-4 py-2 w-25"
         onchange="location = this.value;">
-
         <option value="{{ collection.url }}?sort_by=title-ascending">Alphabetically: A to Z</option>
         <option value="{{ collection.url }}?sort_by=title-descending">Alphabetically: Z to A</option>
         <option value="{{ collection.url }}?sort_by=price-ascending">Price: Low to High</option>
         <option value="{{ collection.url }}?sort_by=price-descending">Price: High to Low</option>
         <option value="{{ collection.url }}?sort_by=created-ascending">Date: Old to New</option>
         <option value="{{ collection.url }}?sort_by=created-descending">Date: New to Old</option>
-
-
-
-        <!-- Add additional sort options here -->
       </select>
       <div class="all_product_count mx-4">
-        <h1>{{ collection.products_count }}</h1>
+        <h1>{{ collection.products_count }} Results</h1>
       </div>
     </div>
   </div>
+
   {% comment %}End Shorting Filter {% endcomment %}
+
+
   <!-- Creatting Filter For collections -->
 
   {% paginate collection.products by section.settings.number_of_products_per_page %}
-    <h1 class="text-5xl text-center py-4 mb-8">{{ collection.title }}</h1>
+    <h1 class="text-5xl text-center py-4 mb-8">
+      {{ collection.title }}</h1>
     <div class="flex">
-
-
       {% comment %}  {% endcomment %}
       {% comment %}  {% endcomment %}
       {% comment %}  {% endcomment %}
@@ -63,19 +48,45 @@
       {% comment %}  {% endcomment %}
       {% comment %}  {% endcomment %}
         <div class=" w-1/4 min_and_max_amount_functionality filter_availablity_and_price"> <h1 class="mx-4 absolute">Filter:</h1>
+
+
+        {% comment %} Show Collections category {% endcomment %}
+        <div class="Collections-list mt-6">
+          <ul class="border shadow-xl px-7 py-5">
+            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Collections</h1>
+
+            {% for collection in collections %}
+              <li class=" text-2xl ">
+                <a href="{{ collection.url }}" class="hover:underline">{{ collection.title }} ({{ collection.products_count }})</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+
+
         {% comment %} Show Vendors {% endcomment %}
+
+
         <div class="Vendors mt-6">
           <ul class="border shadow-xl px-7 py-5">
-            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Vendors List</h1>
+            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Vendors
+            </h1>
             {% for vendor in collection.all_vendors %}
 
               <li class=" text-2xl">
-                <a href="{{ collection.all_vendors.products }}">
+
+
+
+                <a href="/collections/vendors?q=">
                   {{ vendor }}</a>
               </li>
             {% endfor %}
           </ul>
         </div>
+
+
+
         {% comment %} Show tag   {% endcomment %}
 
         <div class="Tags mt-6">
@@ -90,22 +101,15 @@
 
 
 
-        {% comment %} Show Collections category {% endcomment %}
-
-        <div class="Collections-list mt-6">
-          <ul class="border shadow-xl px-7 py-5">
-            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Collections Lists</h1>
-
-            {% for collection in collections %}
-              <li class=" text-2xl ">
-                <a href="{{ collection.url }}" class="hover:underline">{{ collection.title }} ({{ collection.products_count }})</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-
-
         {% comment %} Show Availabilyty{% endcomment %}
+        <div class="Availability mt-6">
+          <ul class="border shadow-xl px-7 py-5">
+            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Availability</h1>
+          </ul>
+
+
+
+        </div>
 
 
 
