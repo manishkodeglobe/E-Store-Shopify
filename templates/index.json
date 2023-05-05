@@ -1,18 +1,11 @@
 {
   "sections": {
 
-
-
-
     "hero": {
       "type": "banner",
       "settings": {
-        "slide_1": "shopify:\/\/shop_images\/AdobeStock_320686681_Preview.jpg",
-        "slide_2": "shopify:\/\/shop_images\/AdobeStock_547695839_Preview.jpg",
-        "slide_3": "shopify:\/\/shop_images\/AdobeStock_369394275_Preview.jpg",
-        "slide_4": "shopify:\/\/shop_images\/AdobeStock_238206143_Preview.jpg",
-        "slide_5": "shopify:\/\/shop_images\/AdobeStock_369394275_Preview.jpg",
-        "slide_6": "shopify:\/\/shop_images\/AdobeStock_320686681_Preview.jpg"
+   
+ 
       }
     },
 
