@@ -1,84 +1,85 @@
 <div class="flexslider  ">
-  <ul class="slides flex items-center">
+  <ul class="slides">
     <li>
       <img
-        src="{{ 'banner-1.webp' | asset_url }}"
+        src="{{ section.settings.slide_1 | image_url }}"
         width="full"
         height="full"
         loading="lazy">
     </li>
-
     <li>
       <img
-        src="{{ 'banner-2.jpg' | asset_url }}"
+        src="{{ section.settings.slide_2 | image_url }}"
         width="full"
         height="full"
         loading="lazy">
     </li>
-
     <li>
       <img
-        src="{{ 'banner-3.jpg' | asset_url }}"
+        src="{{ section.settings.slide_3 | image_url }}"
         width="full"
         height="full"
         loading="lazy">
     </li>
-
+    <li>
+      <img
+        src="{{ section.settings.slide_4 | image_url }}"
+        width="full"
+        height="full"
+        loading="lazy">
+    </li>
+    <li>
+      <img
+        src="{{ section.settings.slide_5 | image_url }}"
+        width="full"
+        height="full"
+        loading="lazy">
+    </li>
+    <li>
+      <img
+        src="{{ section.settings.slide_6 | image_url }}"
+        width="full"
+        height="full"
+        loading="lazy">
+    </li>
   </ul>
 </div>
 
 
 
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-{% comment %} Image Picker Slider {% endcomment %}
-  <div class="flexslider  "> <ul class="slides flex items-center">
-    {% for block in section.blocks %}
-      {% case block.type %}
-        {% when 'image' %}
-        <li>
-          {% if block.settings.image %}
-            <img
-              src="{{ block.settings.image | image_url }}"
-              width="full"
-              height="full"
-              loading="lazy" />
-          {% else %}
-            <div class="flex items-center justify-center">
-              <div>
-                <h1 class="text-3xl font-bold py-80">No Images Added in Crauosal</h1>
-              </div>
-            </div>
-          {% endif %}
-
-        </li>
-      {% endcase %}
-    {% endfor %}
-  </ul>
-</div>
 {% schema %}
   {
-    "name": "BannerHomePage",
-    "blocks": [
+    "name": "HeroBenner",
+    "settings": [
       {
-        "type": "image",
-        "name": "image_block",
-        "limit": 6,
-        "settings": [
-          {
-            "type": "image_picker",
-            "label": "Banner Slides",
-            "id": "image"
-          }
-        ]
+        "type": "image_picker",
+        "id": "slide_1",
+        "label": "slider images"
+      },
+      {
+        "type": "image_picker",
+        "id": "slide_2",
+        "label": "slider images"
+      },
+      {
+        "type": "image_picker",
+        "id": "slide_3",
+        "label": "slider images"
+      },
+      {
+        "type": "image_picker",
+        "id": "slide_4",
+        "label": "slider images"
+      }, {
+        "type": "image_picker",
+        "id": "slide_5",
+        "label": "slider images"
+      }, {
+        "type": "image_picker",
+        "id": "slide_6",
+        "label": "slider images"
       }
+
     ]
   }
 {% endschema %}
