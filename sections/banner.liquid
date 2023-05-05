@@ -1,5 +1,45 @@
 <div class="flexslider  ">
   <ul class="slides flex items-center">
+    <li>
+      <img
+        src="{{ 'banner-1.webp' | asset_url }}"
+        width="full"
+        height="full"
+        loading="lazy">
+    </li>
+
+    <li>
+      <img
+        src="{{ 'banner-2.jpg' | asset_url }}"
+        width="full"
+        height="full"
+        loading="lazy">
+    </li>
+
+    <li>
+      <img
+        src="{{ 'banner-3.jpg' | asset_url }}"
+        width="full"
+        height="full"
+        loading="lazy">
+    </li>
+
+  </ul>
+</div>
+
+
+
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+{% comment %} Image Picker Slider {% endcomment %}
+  <div class="flexslider  "> <ul class="slides flex items-center">
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'image' %}
