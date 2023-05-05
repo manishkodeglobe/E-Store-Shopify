@@ -1,17 +1,17 @@
-<style>
-  .Sticky_navbar {
-    right: 0;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    background-color: white;
-  }
-</style>
+{% comment %} <style>
+.Sticky_navbar {
+right: 0;
+position: fixed;
+z-index: 100;
+top: 0;
+left: 0;
+background-color: white;
+}
+</style> {% endcomment %}
 
 
-<div class="Sticky_navbar shadow-2xl">
-  <div class="container mx-auto">
+<div class=" shadow-2xl">
+  <div class="container mx-auto Sticky_navbar">
     <div class="relative bg-white" x-data="{ mobileMenuOpen:  false , searchBaropen: false }">
       <div class="mx-auto px-4 sm:px-6">
         {% comment %} div for Navigation {% endcomment %}
