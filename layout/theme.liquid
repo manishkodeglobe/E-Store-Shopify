@@ -25,10 +25,12 @@
     {% comment %} {% if template == 'index' %}
     {% section 'banner' %}
     {% endif %} {% endcomment %}
+    <div class="main_content">
+      <main role="main">
+        {{ content_for_layout }}
+      </main>
+    </div>
 
-    <main role="main">
-      {{ content_for_layout }}
-    </main>
 
     {% section 'footer' %}
     <script src="{{ 'flexslider-init.js' | asset_url }}" async></script>
