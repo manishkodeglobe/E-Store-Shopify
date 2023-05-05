@@ -2,52 +2,49 @@
   <ul class="slides">
     <li>
 
-      {% if section.settings.slide_1 != blank %}
-        <img
-          src="{{ section.settings.slide_1 | image_url | asset_url }}"
-          width="full"
-          height="full"
-          loading="lazy">
-      {% else %}
-        {{ 'lifestyle-1' | placeholder_svg_tag }}
-      {% endif %}
+
+      <img
+        src="{{ 'logos.png' | asset_url }}"
+        width="full"
+        height="full"
+        loading="lazy">
+
     </li>
     <li>
-      {% if section.settings.slide_2 != blank %}
-        <img
-          src="{{ section.settings.slide_2 | image_url | asset_url }}"
-          width="full"
-          height="full"
-          loading="lazy">
-          {% else %}
-          {{ 'lifestyle-1' | placeholder_svg_tag }}
-        {% endif %}
-    </li>
+
+      <img
+        src="{{ 'logos.png' | asset_url }}"
+        width="full"
+        height="full"
+        loading="lazy">
+
+
+
     </li>
     <li>
       <img
-        src="{{ section.settings.slide_3 | image_url | asset_url }}"
+        src="{{ 'logos.png' | asset_url }}"
         width="full"
         height="full"
         loading="lazy">
     </li>
     <li>
       <img
-        src="{{ section.settings.slide_4 | image_url | asset_url }}"
+        src="{{ 'logos.png' | asset_url }}"
         width="full"
         height="full"
         loading="lazy">
     </li>
     <li>
       <img
-        src="{{ section.settings.slide_5 | image_url | asset_url }}"
+        src="{{ 'logos.png' | asset_url }}"
         width="full"
         height="full"
         loading="lazy">
     </li>
     <li>
       <img
-        src="{{ section.settings.slide_6 | image_url | asset_url }}"
+        src="{{ 'logos.png' | asset_url }}"
         width="full"
         height="full"
         loading="lazy">
