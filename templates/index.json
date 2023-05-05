@@ -1,14 +1,12 @@
 {
   "sections": {
-    "hero": {
+    "banner": {
       "type": "banner",
       "settings": {
-        "slide_1": "assets/banner-1.webp",
-        "slide_2": "https://cdn.shopify.com/s/files/1/0561/8473/3749/files/Box_Dutch_the_why_-_no_background.png",
-        "slide_3": "shopify:\/\/shop_images\/white-flowing-sheet-outdoors-with-a-wooden-stool-in-front-of-it.jpg",
-        "slide_4": "shopify:\/\/shop_images\/modern-jewelry-and-accessories-on-display.jpg",
-        "slide_5": "shopify:\/\/shop_images\/modern-jewelry-and-accessories-on-display.jpg"
+
       }
+  
+ 
     },
     "featured-collection": {
       "type": "featured-collection",
@@ -25,16 +23,6 @@
         "subtitle": "— ioki.makoi"
       }
     },
-    "SpecificList-collection-prd": {
-      "type": "HomePage-specific-collection-craousal",
-      "settings": {
-      }
-    },
-    "homepage-specific-collection-2": {
-      "type": "homepage-specific-collection-2",
-      "settings": {
-      }
-    },
     "list-collections": {
       "type": "template-list-collections",
       "settings": {
@@ -43,6 +31,17 @@
 
         ]
       }
+    },
+
+    "SpecificList-collection-prd":{
+      "type": "HomePage-specific-collection-craousal",
+      "settings": {
+
+      }
+    },
+
+    "homepage-specific-collection-2":{
+      "type":"homepage-specific-collection-2"
     },
     "second-level-banner": {
       "type": "second-level-banner",
@@ -53,7 +52,7 @@
     }
   },
   "order": [
-    "hero",
+    "banner",
     "featured-collection",
     "image-n-text",
     "SpecificList-collection-prd",
