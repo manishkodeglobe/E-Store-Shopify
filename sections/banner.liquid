@@ -1,10 +1,63 @@
-<div class="flexslider  ">
-  <ul class="slides">
-    <li class="h-full flex items-center justify-center">slide</li>
-    <li class="h-full flex items-center justify-center">slide</li>
-    <li class="h-full flex items-center justify-center">slide</li>
-    <li class="h-full flex items-center justify-center">slide</li>
-  </ul>
+<style>
+  .swiper_product {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    display: block;
+  }
+
+  .next_prev {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+</style>
+
+
+<div class="container mx-auto my-16">
+  <div class="Titles_specific collections">
+    <h1 class="text-5xl capitalize mb-10 italic  ">Bags</h1>
+  </div>
+
+  {% assign collection_handle = 'bags' %}
+  {% assign collection_for_bag = collections[collection_handle] %}
+
+
+    <div class="swiper_product">
+    <div class="next_prev mb-12">
+      <span class="swiper-button-prev_product ">{% render 'left-arrow-slider' %}
+      </span>
+      <span class="swiper-button-next_product mx-8">{% render 'right-arrow-slider' %}
+      </span>
+    </div>
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {% for product in collection_for_bag.products %}
+        <div class="swiper-slide">
+          <div class="card shadow-lg overflow-hidden w-full ">
+            <img
+              class="w-full  object-cover"
+              src="{{ product.featured_image | image_url }}"
+              width="full"
+              height="auto"
+              loading="lazy">
+            <div class="specific_product_details px-5 py-3 hover:no-underline underline ">
+              <h2 class="text-2xl mb-3 capitalize">{{ product.title }}</h2>
+              <a class="text-lg  capitalize hover:text-gray-800 font-medium" href="{{ product.url }}">View Product</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+
+
+    </div>
+
+  </div>
 </div>
 
 
