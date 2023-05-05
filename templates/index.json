@@ -8,7 +8,6 @@
  
       }
     },
-
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
@@ -24,6 +23,16 @@
         "subtitle": "— ioki.makoi"
       }
     },
+    "SpecificList-collection-prd": {
+      "type": "HomePage-specific-collection-craousal",
+      "settings": {
+      }
+    },
+    "homepage-specific-collection-2": {
+      "type": "homepage-specific-collection-2",
+      "settings": {
+      }
+    },
     "list-collections": {
       "type": "template-list-collections",
       "settings": {
@@ -32,17 +41,6 @@
 
         ]
       }
-    },
-
-    "SpecificList-collection-prd":{
-      "type": "HomePage-specific-collection-craousal",
-      "settings": {
-
-      }
-    },
-
-    "homepage-specific-collection-2":{
-      "type":"homepage-specific-collection-2"
     },
     "second-level-banner": {
       "type": "second-level-banner",
