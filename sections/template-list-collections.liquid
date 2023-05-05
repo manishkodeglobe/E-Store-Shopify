@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="list_collections_section">
   <div class="container mx-auto">
 
@@ -66,4 +67,74 @@
       }
     ]
   }
+=======
+<div class="list_collections_section">
+  <div class="container mx-auto">
+
+
+
+    <div class="SearchBar_for_collectiond"></div>
+
+
+    <div class="flex flex-col py-9 items-center">
+      <h1 class="text-3xl font-medium">{{ section.settings.title }}</h1>
+      <div class="  my-3">
+        <div class="grid grid-cols-3 md:grid-cols-2 gap-6">
+          {% for collection in collections %}
+            {% if collection.all_products_count >= 0 %}
+              <div class="w-full pb-6   bg-white rounded shadow-xl" data-section="{{ section.id }}">
+                <div class="w-full h-full">
+                  <a class="w-full h-full" href="{{ collection.url }}">
+                    {% comment %} <div class="h-80 overflow-hidden"> {% endcomment %}
+                    <div class="w-full h-full collection-image_directions {{ section.id }}-{{ forloop.index0 }}">
+                      {% if collection.featured_image != blank %}
+                        {% assign collection_image = collection.featured_image %}
+                      {% else %}
+                        {% assign collection_image = collections.products.first.image %}
+                      {% endif %}
+
+                      <img
+                        class="w-full h-96"
+                        src="{{ collection_image | image_url }}"
+                        height="full"
+                        width="full"
+                        loading="lazy">
+                      <div class="  p-6">
+                        <h1 class="text-xl  ">{{ collection.title }}</h1>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% else %}
+              <div class="flex items-center justify-center">
+                <h1 class="text-7xl">Sorry No Collections Found!🥺</h1>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "List Collections",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Collections"
+
+      }, {
+        "type": "collection_list",
+        "id": "collection_lists",
+        "label": "all collections list"
+      }
+    ]
+  }
+>>>>>>> origin/master
 {% endschema %}
