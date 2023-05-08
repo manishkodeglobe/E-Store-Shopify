@@ -1,0 +1,7 @@
+{
+    "settings":{
+        "template":{
+            "type":"template-registration"
+        }
+    },"order":["template"]
+}
