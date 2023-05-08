@@ -1,7 +1,7 @@
 {
-    "settings":{
+    "sections":{
         "template":{
-            "type":"template-registration"
+            "type":"template-customer-registration"
         }
     },"order":["template"]
 }
