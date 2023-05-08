@@ -34,7 +34,7 @@
       <!-- Slides -->
 
       <div class="swiper-slide">
-        <div class="card shadow-lg overflow-hidden w-full ">
+        <div class="card ">
           <img
             class="w-full  object-cover"
             src="{{ 'banner-1.webp' | asset_url }}"
@@ -68,12 +68,14 @@
 
     </div>
 
-    <div class="next_prev mb-12">
-      <span class="swiper-button-prev_product">{% render 'left-arrow-slider' %}
-      </span>
-      <span class="swiper-button-next_product mx-8">{% render 'right-arrow-slider' %}
-      </span>
-    </div>
+
 
   </div>
+</div>
+
+<div class="next_prev mb-12 justify-center py-6">
+  <span class="swiper-button-prev_product">{% render 'left-arrow-slider' %}
+  </span>
+  <span class="swiper-button-next_product mx-8">{% render 'right-arrow-slider' %}
+  </span>
 </div>
