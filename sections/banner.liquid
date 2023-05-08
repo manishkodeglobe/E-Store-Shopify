@@ -2,35 +2,33 @@
   .swiper_banner {
     margin-left: auto;
     margin-right: auto;
-    position: relative;
+
     overflow: hidden;
     list-style: none;
     padding: 0;
     z-index: 1;
     display: block;
+    height: 800px;
   }
 
   .next_prev {
     display: flex;
     flex-direction: row-reverse;
   }
+
+  .HomePage_banner {
+    height: 800px;
+
+  }
 </style>
 
 
-<div class="container mx-auto my-16">
-  <div class="Titles_specific collections">
-    <h1 class="text-5xl capitalize mb-10 italic  ">Bags</h1>
-  </div>
+<div class="container-fluid HomePage_banner">
 
 
 
   <div class="swiper_banner">
-    <div class="next_prev mb-12">
-      <span class="swiper-button-prev_product ">{% render 'left-arrow-slider' %}
-      </span>
-      <span class="swiper-button-next_product mx-8">{% render 'right-arrow-slider' %}
-      </span>
-    </div>
+
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
       <!-- Slides -->
@@ -39,7 +37,7 @@
         <div class="card shadow-lg overflow-hidden w-full ">
           <img
             class="w-full  object-cover"
-            src="{{ 'banner-1.webp' | image_url }}"
+            src="{{ 'banner-1.webp' | asset_url }}"
             width="full"
             height="auto"
             loading="lazy">
@@ -49,7 +47,7 @@
         <div class="card shadow-lg overflow-hidden w-full ">
           <img
             class="w-full  object-cover"
-            src="{{ 'banner-1.webp' | image_url }}"
+            src="{{ 'banner-2.jpg' | asset_url }}"
             width="full"
             height="auto"
             loading="lazy">
@@ -59,7 +57,7 @@
         <div class="card shadow-lg overflow-hidden w-full ">
           <img
             class="w-full  object-cover"
-            src="{{ 'banner-1.webp' | image_url }}"
+            src="{{ 'banner-3.jpg' | asset_url }}"
             width="full"
             height="auto"
             loading="lazy">
@@ -68,6 +66,13 @@
 
 
 
+    </div>
+
+    <div class="next_prev mb-12">
+      <span class="swiper-button-prev_product">{% render 'left-arrow-slider' %}
+      </span>
+      <span class="swiper-button-next_product mx-8">{% render 'right-arrow-slider' %}
+      </span>
     </div>
 
   </div>
