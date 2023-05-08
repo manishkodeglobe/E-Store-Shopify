@@ -1,5 +1,5 @@
 <style>
-  .swiper_product {
+  .swiper_banner {
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -24,7 +24,7 @@
 
 
 
-  <div class="swiper_product">
+  <div class="swiper_banner">
     <div class="next_prev mb-12">
       <span class="swiper-button-prev_product ">{% render 'left-arrow-slider' %}
       </span>
@@ -35,6 +35,16 @@
     <div class="swiper-wrapper">
       <!-- Slides -->
 
+      <div class="swiper-slide">
+        <div class="card shadow-lg overflow-hidden w-full ">
+          <img
+            class="w-full  object-cover"
+            src="{{ 'banner-1.webp' | image_url }}"
+            width="full"
+            height="auto"
+            loading="lazy">
+        </div>
+      </div>
       <div class="swiper-slide">
         <div class="card shadow-lg overflow-hidden w-full ">
           <img
