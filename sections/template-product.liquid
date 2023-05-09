@@ -185,67 +185,70 @@
 </div>
 
 
+
 {% comment %} Recently View Products {% endcomment %}
 {% render 'recently-viewed' %}
 
 
 
+{% comment %}  {% endcomment %}
+
 {% comment %} single product slider {% endcomment %}
-<script>
-  const swiper_product = new Swiper('.swiper', {
-    direction: 'horizontal',
+  <script>
+const swiper_product = new Swiper('.swiper', {
+  direction: 'horizontal',
 
-    pagination: {
-      el: '.swiper-pagination'
-    },
+  pagination: {
+    el: '.swiper-pagination'
+  },
 
-    navigation: {
-      prevEl: '.Swiper_Button_For_Product_Slide_prev',
-      nextEl: '.Swiper_Button_For_Product_Slide_next'
-    }
-  });
+  navigation: {
+    prevEl: '.Swiper_Button_For_Product_Slide_prev',
+    nextEl: '.Swiper_Button_For_Product_Slide_next'
+  }
+});
 </script>
 
 
 
-{% schema %}
-  {
-    "name": " Product",
-    "blocks": [
-      {
-        "type": "vendor",
-        "name": "vendor",
-        "limit": 1
-      },
-      {
-        "type": "title",
-        "name": "title",
-        "limit": 1
-      },
-      {
-        "type": "price",
-        "name": "price",
-        "limit": 1
-      },
-      {
-        "type": "variant_selecter",
-        "name": "variant selector",
-        "limit": 1
-      }, {
-        "type": "quantity",
-        "name": "Quantity",
-        "limit": 1
-      }, {
-        "type": "description",
-        "name": "description",
-        "limit": 1
-      }, {
-        "type": "checkout_button",
-        "name": "checkout button",
-        "limit": 1
-      }
+  {% schema %}
+{
+  "name": " Product",
+  "blocks": [
+    {
+      "type": "vendor",
+      "name": "vendor",
+      "limit": 1
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "price",
+      "limit": 1
+    },
+    {
+      "type": "variant_selecter",
+      "name": "variant selector",
+      "limit": 1
+    }, {
+      "type": "quantity",
+      "name": "Quantity",
+      "limit": 1
+    }, {
+      "type": "description",
+      "name": "description",
+      "limit": 1
+    }, {
+      "type": "checkout_button",
+      "name": "checkout button",
+      "limit": 1
+    }
 
-    ]
+  ]
 
-  }
+}
 {% endschema %}
