@@ -43,7 +43,6 @@
           </div>
         {% endfor %}
       </div>
-
       <div class="md:hidden">
         <div class="swiper h-94">
           <div class="swiper-wrapper">
@@ -55,9 +54,7 @@
               </div>
             {% endfor %}
           </div>
-
           <div class="swiper-pagination"></div>
-
           <div class="Swiper_Button_For_Product_Slide_prev">
             {% render 'leftarrow' %}
           </div>
@@ -74,9 +71,7 @@
           type="hidden"
           name="id"
           value="{{ selected_variant.id }}">
-
         {% for block in section.blocks %}
-
           {% case block.type %}
             {% when 'vendor' %}
             {% comment %} show Vender {% endcomment %}
@@ -91,14 +86,12 @@
             {% when 'price' %}
             {% comment %} Show Price {% endcomment %}
             <div class="my-3">
-
               <span class="text-base text-gray-500 line-through">{{ selected_variant.compare_at_price | money }}</span>
               <span class="text-lg text-gray-500">{{ selected_variant.price | money }}</span>
               {% if selected_variant.price < selected_variant.compare_at_price %}
                 <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4">Sale</span>
               {% endif %}
             </div>
-
             {% when 'variant_selecter' %}
             {% comment %} Show  variants  {% endcomment %}
             <div class="my-3">
@@ -106,7 +99,6 @@
                 <div data-url="{{ product.url }}" data-section="{{ section.id }}">
                   {% for option in product.options_with_values %}
                     <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
-
                     <div class="my-2">
                       <select
                         name="options[{{ option.name | escape }}]"
@@ -123,11 +115,8 @@
                 </div>
               {% endunless %}
             </div>
-
             {% comment %} End Varieants {% endcomment %}
-
             {% when 'quantity' %}
-
             {% comment %} Show Quantity {% endcomment %}
             <div class="my-3">
               <label for="quantity-{{ section.id }}">quantity</label>
@@ -141,15 +130,9 @@
                   class="w-full border px-3 py-3">
               </div>
             </div>
-
-
-
             {% when 'description' %}
             {% comment %} Product Description {% endcomment %}
             <p class="text-gray-500">{{ product.description }}</p>
-
-
-
             <!-- Custome Fields For Electronic Products  -->
             <style>
               .SpecificationReading_button {
@@ -160,9 +143,6 @@
                 cursor: pointer;
               }
             </style>
-
-
-
             <div class="my-5 Electronic_Items_Specifications" x-data="{ defaultHideData : false}">
               <nav>
                 <div class="  px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData =  true">Read Specifications..</div>
@@ -174,16 +154,9 @@
                 </nav>
               </div>
             </div>
-
-
             <!-- Show Replacement mes -->
             <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
-
-
             <!--END Custome Fields For Electronic Products  -->
-
-
-
             {% when 'checkout_button' %}
             {% comment %} Product Add To Cart Button {% endcomment %}
             <button
@@ -197,37 +170,21 @@
               {% else %}
                 Sold Out
               {% endif %}
-
-
             </button>
-
-
-
         {% else %}
-
           {% endcase %}
-
         {% endfor %}
-
         {% comment %} social sharring buttons {% endcomment %}
         <div class="flex justify-center items-center">
           {% render 'social-sharing' %}
         </div>
         {% comment %} end social sharring buttons {% endcomment %}
-
-
-
       {% endform %}
-
-
-
     </div>
   </div>
-
-
-
 </div>
 
+ 
 
 {% comment %} single product slider {% endcomment %}
 <script>
