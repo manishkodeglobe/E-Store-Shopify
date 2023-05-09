@@ -1,5 +1,31 @@
 {
   "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_form_paragraph": "Sign up For Early Access on New Releases and Save 10% on Your First Order",
+          "copyRight_Message": "UNHIDE. ALL RIGHTS RESERVED"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "8776485610325655785": {
+        "type": "shopify:\/\/apps\/hiko-social-login\/blocks\/hiko-auth\/3832d7e1-5bcd-4b72-91da-236b57feef8f",
+        "disabled": false,
+        "settings": {
+          "social_font": "enable"
+        }
+      }
+    }
   },
   "presets": {
     "Default": {
