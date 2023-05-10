@@ -36,96 +36,12 @@
 
 
   <!-- Creatting Filter For collections -->
-
-  {% paginate collection.products by section.settings.number_of_products_per_page %}
-    <h1 class="text-5xl text-center py-4 mb-8">
-      {{ collection.title }}</h1>
-    <div class="flex">
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-        <div class=" w-1/4 min_and_max_amount_functionality filter_availablity_and_price"> <h1 class="mx-4 absolute">Filter:</h1>
-
-
-        {% comment %} Show Collections category {% endcomment %}
-        <div class="Collections-list mt-6">
-          <ul class="border shadow-xl px-7 py-5">
-            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Collections</h1>
-
-            {% for collection in collections %}
-              <li class=" text-2xl ">
-                <a href="{{ collection.url }}" class="hover:underline">{{ collection.title }} ({{ collection.products_count }})</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+    {% render 'product-page-filter' %}
+  <!-- Creatting Filter For collections -->
 
 
 
-        {% comment %} Show Vendors {% endcomment %}
-
-
-        <div class="Vendors mt-6">
-          <ul class="border shadow-xl px-7 py-5">
-            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Vendor
-            </h1>
-            {% for vendor in collection.all_vendors %}
-
-              <li class=" text-2xl">
-
-
-
-                <a href="">
-                  {{ vendor }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-
-
-        {% comment %} Show tag   {% endcomment %}
-
-        <div class="Tags mt-6">
-          <ul class="border shadow-xl px-7 py-5">
-            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Tag Lists</h1>
-
-            {% for tag in collection.all_tags %}
-              <li class=" text-2xl">{{ tag }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-
-
-
-        {% comment %} Show Availabilyty{% endcomment %}
-        <div class="Availability mt-6">
-          <ul class="border shadow-xl px-7 py-5">
-            <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Availability</h1>
-          </ul>
-
-
-
-        </div>
-
-
-
-      </div>
-
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-      {% comment %}  {% endcomment %}
-
-
-
-        <div class=" w-3/4 grid   sm:grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4"> {% for product in collection.products %}
+        <div class=" w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6  px-4"> {% for product in collection.products %}
           {% render 'product-card', product_product: product %}
 
         {% else %}
