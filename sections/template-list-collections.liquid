@@ -4,17 +4,15 @@
 
 
     <div class="SearchBar_for_collectiond"></div>
-
-
     <div class="flex flex-col py-9 items-center">
-      <h1 class="text-3xl font-medium">{{ section.settings.title }}</h1>
+      <h1 class="text-3xl font-medium my-14 uppercase hover:text-red-500 ">{{ section.settings.title }}</h1>
       <div class="  my-3">
-        <div class="grid grid-cols-3 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6  px-4">
           {% for collection in collections %}
             {% if collection.all_products_count >= 0 %}
               <div class="w-full pb-6   bg-white rounded shadow-xl" data-section="{{ section.id }}">
                 <div class="w-full h-full">
-                  <a class="w-full h-full" href="{{ collection.url }}">
+                  <DIV class="w-full h-full">
                     {% comment %} <div class="h-80 overflow-hidden"> {% endcomment %}
                     <div class="w-full h-full collection-image_directions {{ section.id }}-{{ forloop.index0 }}">
                       {% if collection.featured_image != blank %}
@@ -24,16 +22,22 @@
                       {% endif %}
 
                       <img
-                        class="w-full h-96"
+                        class="w-full"
                         src="{{ collection_image | image_url }}"
                         height="full"
                         width="full"
                         loading="lazy">
-                      <div class="  p-6">
-                        <h1 class="text-xl  ">{{ collection.title }}</h1>
+                      <div class="p-6">
+                        <a href="{{ collection.url }}" class="text-xl hover:underline">{{ collection.title }}</a>
+                        <p class="text-sm py-4">{{ collection.description }}</p>
                       </div>
+                      <div class="flex items-center justify-center">
+                        <a href="{{ collection.url }}" class="text-white py-3 px-8 bg-black hover:bg-white hover:text-black border transition  duration-300 ">SHOP NOW
+                        </a>
+                      </div>
+
                     </div>
-                  </a>
+                  </div>
                 </div>
               </div>
             {% else %}

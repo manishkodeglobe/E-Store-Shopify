@@ -6,8 +6,8 @@
 {% comment %} slider {% endcomment %}
 <div class="swiper">
   <!-- Additional required wrapper -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev">{% render 'left-arrow-slider' %}</div>
+  <div class="swiper-button-next">{% render 'right-arrow-slider' %}</div>
   <div class="swiper-wrapper">
     <!-- Slides -->
   {% for product in section.settings.featured_collection.products limit: section.settings.number_of_product_show %}
@@ -21,7 +21,7 @@
 </div>
 <div class="flex feaured_collection_back_buttons justify-center uppercase font-bold my-9">
   <a href="{{ collection.url }}" class="px-5 py-4 mx-3"  >Shop Trending Clothes</a>
-  <a href="{{ collection.url }}" class="px-5 py-4 mx-3 bg-slate-950   text-white" >Shop Trending Clothes</a>
+  <a href="{{ collection.url }}" class="px-5 py-4 mx-3 bg-slate-950    " >Shop Trending Clothes</a>
 </div>
 </div>
 </div>
