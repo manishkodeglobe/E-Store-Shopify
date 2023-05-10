@@ -7,11 +7,26 @@
     padding: 0;
     z-index: 1;
     display: block;
+  }
+  .next_prev {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .Hero_banner {
+    height: 700px;
+  }
+
+  .Banner_slide img {
+    height: 700px;
 
   }
 
+  .HomeBabber_Navgation {
 
-  .next_prev {
+    position: relative;
+    top: -56%;
+    z-index: 11;
     display: flex;
     flex-direction: row-reverse;
   }
@@ -23,16 +38,16 @@
 
 
 
-  <div class="swiper_banner">
+  <div class="swiper_banner Hero_banner">
 
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
       <!-- Slides -->
 
       <div class="swiper-slide">
-        <div class="card ">
+        <div class="card Banner_slide">
           <img
-            class="w-full  object-cover"
+            class="w-full h-full  object-cover"
             src="{{ 'banner-1.webp' | asset_url }}"
             width="full"
             height="auto"
@@ -40,7 +55,7 @@
         </div>
       </div>
       <div class="swiper-slide">
-        <div class="card shadow-lg overflow-hidden w-full ">
+        <div class="card shadow-lg overflow-hidden w-full Banner_slide">
           <img
             class="w-full  object-cover"
             src="{{ 'banner-2.jpg' | asset_url }}"
@@ -50,7 +65,7 @@
         </div>
       </div>
       <div class="swiper-slide">
-        <div class="card shadow-lg overflow-hidden w-full ">
+        <div class="card shadow-lg overflow-hidden w-full Banner_slide">
           <img
             class="w-full  object-cover"
             src="{{ 'banner-3.jpg' | asset_url }}"
@@ -66,12 +81,11 @@
 
 
 
+    <div class="HomeBabber_Navgation mb-12 justify-between py-6">
+      <span class="swiper-button-prev_product mx-8">{% render 'left-arrow-slider' %}
+      </span>
+      <span class="swiper-button-next_product mx-8">{% render 'right-arrow-slider' %}
+      </span>
+    </div>
   </div>
-</div>
-
-<div class="next_prev mb-12 justify-center py-6">
-  <span class="swiper-button-prev_product">{% render 'left-arrow-slider' %}
-  </span>
-  <span class="swiper-button-next_product mx-8">{% render 'right-arrow-slider' %}
-  </span>
 </div>
