@@ -7,7 +7,7 @@
     {% assign collection_for_dresses = collections[collection_handle] %}
 
     {% for product in collection_for_dresses.products %}
-      <div class="card shadow-lg overflow-hidden w-full ">
+      <div class="card shadow-lg overflow-hidden w-full px-3 py-20">
         <img
           class="w-full  object-cover"
           src="{{ product.featured_image | image_url }}"
