@@ -46,7 +46,7 @@
               height="auto"
               loading="lazy">
             <div class="specific_product_details px-5 py-3 hover:no-underline underline ">
-              <h2 class="text-2xl mb-3 capitalize">{{ product.title }}</h2>
+              <h2 class="text-2xl mb-3 capitalize">{{ product.title | truncatewords: 3 }}</h2>
               <a class="text-lg  capitalize hover:text-gray-800 font-medium" href="{{ product.url }}">View Product</a>
             </div>
           </div>

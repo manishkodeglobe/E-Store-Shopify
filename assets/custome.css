@@ -141,7 +141,7 @@ ul.footer_links_menu li {
 
 .slider_title_home_page {
   margin: 80px 0 10px;
-  max-width: 34%;
+ 
 
   font-weight: lighter;
 }
@@ -191,9 +191,8 @@ ul.footer_links_menu li {
 }
 
 .image-with_text_headings.text-center {
-  margin: auto;
-  max-width: 35%;
-  padding: 100px 0;
+ 
+ 
 }
 
 .product_image_width {
