@@ -6,10 +6,10 @@
 
 
 <footer>
-  <section class="footer_section">
+  <section class="footer_section py-6 md:py-12 md:px-0 px-3">
     <div class="container mx-auto">
       <div class="md:flex">
-        <div class="w-1/2">
+        <div class="w-full md:w-1/2">
           <p class="e-mailling_paragraph">{{ section.settings.footer_form_paragraph }}</p>
           <div class="NewsLetter_form">
             {% comment %} <div class="form_wrapper ">
@@ -67,14 +67,14 @@
             <div class="ig_link mx-3">TW</div>
           </div>
         </div>
-        <div class="w-1/2 flex justify-between privacy_policy_text_typo">
-          <div class=" w-1/1 coppyRightText">
+        <div class="w-full md:w-1/2   justify-between privacy_policy_text_typo md:flex block">
+          <div class="py-2 w-1/1 coppyRightText">
             <p>&copy; {{ 'now' | date: '%Y' }}
               {{ section.settings.copyRight_Message }}</p>
           </div>
 
-          <div class="w-1/1">PRIVACY POLICY</div>
-          <div class="w-1/1">TERMS OF USES</div>
+          <div class="py-2 w-1/1">PRIVACY POLICY</div>
+          <div class="py-2 w-1/1">TERMS OF USES</div>
 
         </div>
 

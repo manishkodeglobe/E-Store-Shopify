@@ -1703,6 +1703,10 @@ video {
     width: 20rem;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:max-w-lg {
     max-width: 32rem;
   }
@@ -1740,6 +1744,26 @@ video {
   .md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .md\:px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .md\:py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .md\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .md\:text-3xl {
