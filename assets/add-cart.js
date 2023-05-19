@@ -1,26 +1,24 @@
 $('#add-to-cart-button').click(function() {
-    addItemToCart("{{ product.id }}", 1, "1", "Months"); // Replace "{{ product.id }}" with the actual product ID
-  });
+  addItemToCart("{{ product.variants.first.id }}", 1); // Replace "{{ product.variants.first.id }}" with the actual variant ID
+});
 
-  var variant_id = "{{ product.first_available_variant.id }}"
-  function addItemToCart(variant_id, qty, frequency, unit_type) {
-    data = {
-      "id": variant_id,
-      "quantity": qty
+ 
+function addItemToCart(variant_id, qty) {
+  var data = {
+    "id": variant_id,
+    "quantity": qty
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: '/assets/add-cart.js',
+    data: data,
+    dataType: 'json',
+    success: function() {
+      document.dispatchEvent(new CustomEvent('cart:refresh', {
+        bubbles: true
+      }));
     }
-    
-    jQuery.ajax({
-      type: 'POST',
-      url: '/assets/add-cart.js',
-      data: data,
-      dataType: 'json',
-      success: function() { 
-        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
-          bubbles: true  //this code is for prestige theme, is to refresh the cart
-       }));
-      }
-    });
-    document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
-    	bubbles: true    // same code for prestige theme   
- 	 }));
-  }
+  });
+}
+
