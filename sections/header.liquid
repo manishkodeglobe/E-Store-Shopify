@@ -33,7 +33,10 @@
 </div>
 {% comment %} Cart Side Bar {% endcomment %}
 
-<div class="Sticky_navbar shadow-2xl" x-data="{ mobileMenuOpen:  false , searchBaropen: false  }">
+<div
+  class="Sticky_navbar shadow-2xl"
+  x-data="{ mobileMenuOpen:  false , searchBaropen: false  }"
+  x-cloak>
 
   <div class="container mx-auto ">
     <div class="relative bg-white">
@@ -56,7 +59,10 @@
             </button>
           </div>
           <!-- NAVIGATION MENU -->
-          <nav x-data="{ open: false }" class="hidden md:flex space-x-10">
+          <nav
+            x-data="{ open: false }"
+            x-cloak
+            class="hidden md:flex space-x-10">
             {% for link in linklists['main-menu'].links %}
               {% if link.links != blank %}
                 {% assign link_handle = link.handle | replace: '-', '_' %}

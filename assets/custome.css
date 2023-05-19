@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+[x-cloak]{display: none!important;}
+
 /* 404 page css  */
 .template404 {
   display: flex;
