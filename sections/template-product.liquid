@@ -162,6 +162,7 @@
             {% when 'checkout_button' %}
             {% comment %} Product Add To Cart Button {% endcomment %}
             <button
+              x-on:click="cartSideBar = true"
               type="submit"
               name="add"
               class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2"

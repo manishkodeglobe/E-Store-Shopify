@@ -20,19 +20,21 @@
   .c-sidebar {
     background-color: white;
     width: 30%;
+    overflow: auto;
 
   }
 </style>
-
-<div class="Sticky_navbar shadow-2xl" x-data="{ mobileMenuOpen:  false , searchBaropen: false , cartSideBar: false }">
-
-  <div class="cart_side_bar flex" x-show="cartSideBar">
-    <div class="blankcs" x-on:click="cartSideBar = false"></div>
-    <div class="c-sidebar flex items-center">
-      {% render 'sidebar-cart' %}
-
-    </div>
+{% comment %} Cart Side Bar {% endcomment %}
+<div class="cart_side_bar flex" x-show="cartSideBar">
+  <div class="blankcs" x-on:click="cartSideBar = false"></div>
+  <div class="c-sidebar flex items-center">
+    {% render 'sidebar-cart' %}
   </div>
+</div>
+{% comment %} Cart Side Bar {% endcomment %}
+
+<div class="Sticky_navbar shadow-2xl" x-data="{ mobileMenuOpen:  false , searchBaropen: false  }">
+
   <div class="container mx-auto ">
     <div class="relative bg-white">
       {% comment %} Cart SideBar {% endcomment %}

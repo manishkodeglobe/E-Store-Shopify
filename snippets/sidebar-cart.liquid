@@ -86,28 +86,28 @@
           </div>
           {% comment %} Subtotal And Checkout And Update Button {% endcomment %}
           <div class="w-full my-4 md:w-80">
-            {% for block in section.blocks %}
-              {% case block.type %}
-                {% when 'subtotal' %}
-                <h3 class="text-xl">Subtotal:{{ cart.total_price | money }}</h3>
 
-                {% when 'update_button' %}
-                <div class="my-2">
-                  <button
-                    type="submit"
-                    name="update"
-                    class="w-full p-3 border border-gray-600 text-gray-600 font-medium hover:bg-gray-600 hover:text-white">Update</button>
-                </div>
-                {% when 'checkout_button' %}
-                <div class="my-2">
-                  <button
-                    type="submit"
-                    name="checkout"
-                    class="w-full p-3 border border-gray-600 font-medium bg-gray-600 text-white">Checkout</button>
-                </div>
-            {% else %}
-              {% endcase %}
-            {% endfor %}
+            <h3 class="text-xl">Subtotal:{{ cart.total_price | money }}</h3>
+
+
+            <div class="my-2">
+              <button
+                type="submit"
+                name="update"
+                class="w-full p-3 border border-gray-600 text-gray-600 font-medium hover:bg-gray-600 hover:text-white">Update</button>
+            </div>
+
+            <div class="my-2">
+              <button
+                type="submit"
+                name="checkout"
+                class="w-full p-3 border border-gray-600 font-medium bg-gray-600 text-white">Checkout</button>
+            </div>
+
+            <div class="my-2">
+              <a href="{{ routes.cart_url }}"type="submit"name="checkout"class="text-center w-full p-3 border border-gray-600 font-medium bg-gray-600 text-white">View Cart</a>
+            </div>
+
           </div>
         </div>
 
