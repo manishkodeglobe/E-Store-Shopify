@@ -2,6 +2,7 @@ $('#add-to-cart-button').click(function() {
     addItemToCart("{{ product.id }}", 1, "1", "Months"); // Replace "{{ product.id }}" with the actual product ID
   });
 
+  var variant_id = "{{ product.first_available_variant.id }}"
   function addItemToCart(variant_id, qty, frequency, unit_type) {
     data = {
       "id": variant_id,
