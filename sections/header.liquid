@@ -1,18 +1,43 @@
 <style>
-
-
-
   .main_content {
     position: relative;
     top: 70 x;
   }
+
+  .cart_side_bar {
+    z-index: 11;
+    top: 0;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+  }
+  .blankcs {
+    width: 70%;
+    background-color: rgba(0, 0, 0, 0.384);
+  }
+  .c-sidebar {
+    background-color: white;
+    width: 30%;
+
+  }
 </style>
 
-<div class="Sticky_navbar shadow-2xl">
+<div class="Sticky_navbar shadow-2xl" x-data="{ mobileMenuOpen:  false , searchBaropen: false , cartSideBar: false }">
+
+  <div class="cart_side_bar flex" x-show="cartSideBar">
+    <div class="blankcs" x-on:click="cartSideBar = false"></div>
+    <div class="c-sidebar flex items-center">
+      {% render 'sidebar-cart' %}
+
+    </div>
+  </div>
   <div class="container mx-auto ">
-    <div class="relative bg-white" x-data="{ mobileMenuOpen:  false , searchBaropen: false }">
-      <div class="mx-auto px-4 sm:px-6">
-        {% comment %} div for Navigation {% endcomment %}
+    <div class="relative bg-white">
+      {% comment %} Cart SideBar {% endcomment %}
+      {% comment %} Cart SideBar {% endcomment %}
+        <div class="mx-auto px-4 sm:px-6"> {% comment %} div for Navigation {% endcomment %}
         <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <!-- STORE NAME / STORE LOGO -->
 
@@ -78,10 +103,11 @@
             <button x-on:click="searchBaropen= true" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
               {% render 'Search-icon' %}
             </button>
-
-            <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
-              {% render 'shopping-bag' %}
-            </a>
+            {% comment %} Cart Button {% endcomment %}
+            <button x-on:click="cartSideBar = true" class="flex whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
+              {% render 'shopping-bag' %}{{ cart.item_count }}
+            </button>
+            {% comment %}end  Cart Button {% endcomment %}
             {% if shop.customer_accounts_enabled == true %}
               {% comment %} {{ shop.customer_accounts_enabled }} {% endcomment %}
               <a href="{{ routes.account_login_url }}" class="text-base text-gray-500 hover:text-gray-900">Login</a>

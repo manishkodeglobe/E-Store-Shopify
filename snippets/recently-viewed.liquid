@@ -1,15 +1,14 @@
 {{ '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' | script_tag }}
 {{ 'jquery.products.min.js' | asset_url | script_tag }}
 
-<div class="Container mx-auto clearfix">
+<div class="container mx-auto my-8 clearfix">
+  <header class="section-header">
+    <h2 class="section-header__title my-5 text-center  text-lg md:text-3xl sm:text-2xl lg:text-5xl">Recently Viewed Products</h2>
+  </header>
   <div class="product-template__container page-width head-room">
     <aside class="grid">
       <div class="grid__item">
-        <div id="recently-viewed-products" class="collection clearfix ">
-          <header class="section-header">
-            <h2 class="section-header__title border-bottom">Recently Viewed Products</h2>
-          </header>
-        </div>
+        <div id="recently-viewed-products" class="collection clearfix card_wrapper  grid grid-cols-1 md:grid-cols-3  gap-10  "></div>
       </div>
     </aside>
   </div>
@@ -19,7 +18,7 @@
 
       <script id="recently-viewed-product-template" type="text/x-jquery-tmpl">
         <div
-          class="grid__item small--one-half medium-up--one-quarter"
+          class="grid__item small--one-half medium-up--one-quarter  border bg-white shadow-lg rounded-lg overflow-hidden"
           itemscope
           itemtype="http://schema.org/Product">
           <div
@@ -28,10 +27,10 @@
             }>
             <div class="image">
               <a href="${url}">
-                <img src="${Shopify.Products.resizeImage(featured_image)}" />
+                <img class="h-full w-full object-cover     " src="${Shopify.Products.resizeImage(featured_image)}" />
               </a>
             </div>
-            <div class="details">
+            <div class="details flex p-5 justify-between">
               <a href="${url}">
                 <span class="title">${title}</span>
                 <!--Add Price Code-->

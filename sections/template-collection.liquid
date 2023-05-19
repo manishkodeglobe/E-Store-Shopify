@@ -4,13 +4,9 @@
   </div>
 
   <!-- Creatting Filters For collections -->
-
   <div class="filters flex justify-end">
-
-
-
     {% comment %} Shorting Filter and avaliblity {% endcomment %}
-    <div class="flex justify-end items-center">
+    <div class="flex justify-left md:justify-end items-center">
       <div class="filter_heading mx-4">
         <h1>Sort By:</h1>
       </div>
@@ -36,28 +32,26 @@
 
 
   <!-- Creatting Filter For collections -->
- 
-    {% render 'product-page-filter' %}
-    
-
-  <!-- Creatting Filter For collections -->
 
 
-
-        <div class=" w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6  px-4"> {% for product in collection.products %}
-
-       
-          {% render 'product-card', product_product: product %}
-    
-
-        {% else %}
-          <div class="font-bold flex justify-center items-center">
-            <h1>There Are No Product In Your Collection</h1>
-          </div>
-        {% endfor %}
-      </div>
+  <h1 class="text-5xl text-center py-4 mb-8">
+    {{ collection.title }}</h1>
+  <div class=" block md:flex">
+    <div class="w-full md:w-1/4 min_and_max_amount_functionality filter_availablity_and_price">
+      <h1 class="mx-4 absolute">Filter:</h1>
+      {% render 'product-page-filter' %}
     </div>
- 
+    <!-- Creatting Filter For collections -->
+    <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6  px-4">
+      {% for product in collection.products %}
+        {% render 'product-card', product_product: product %}
+      {% else %}
+        <div class="font-bold flex justify-center items-center">
+          <h1>There Are No Product In Your Collection</h1>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 
 {% schema %}
