@@ -8,11 +8,17 @@
 
       <div class="my-6 md:my-12">
         <h2 class="text-xl font-bold text-gray-700">Order history</h2>
-      </div>
 
-      <h1>You Dont Have A order
-        <a href="{{ routes.all_products_collection_url }}">Orders now</a>
-      </h1>
+
+
+      </div>
+    {% else %}
+      <div class="flex items-center justify-center font-medium">
+        <h1 class="text-base">You currently don't have any order
+          <a href="{{ routes.all_products_collection_url }}" class="px-4 underline">Orders now</a>
+        </h1>
+
+      </div>
     {% endif %}
   </div>
 
