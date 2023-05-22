@@ -4,6 +4,8 @@
     top: 70 x;
   }
 
+
+
   .cart_side_bar {
     z-index: 11;
     top: 0;
@@ -25,7 +27,15 @@
   }
 </style>
 {% comment %} Cart Side Bar {% endcomment %}
-<div class="cart_side_bar flex" x-show="cartSideBar">
+<div
+  class="cart_side_bar flex"
+  x-show="cartSideBar"
+  x-transition:enter="transition ease-out duration-500"
+  x-transition:enter-start="opacity-0 translate-y-0"
+  x-transition:enter-end="opacity-100 translate-y-0"
+  x-transition:leave="transition ease-out duration-500"
+  x-transition:leave-start="opacity-100 translate-y-0"
+  x-transition:leave-end="opacity-0 translate-y-0">
   <div class="blankcs" x-on:click="cartSideBar = false"></div>
   <div class="c-sidebar flex ">
     {% render 'sidebar-cart' %}
@@ -39,7 +49,7 @@
   x-cloak>
 
   <div class="container mx-auto ">
-    <div class="relative bg-white">
+    <div class="relative  ">
       {% comment %} Cart SideBar {% endcomment %}
       {% comment %} Cart SideBar {% endcomment %}
         <div class="mx-auto px-4 sm:px-6"> {% comment %} div for Navigation {% endcomment %}

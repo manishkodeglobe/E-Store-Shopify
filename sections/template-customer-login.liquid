@@ -54,6 +54,9 @@
       {% endform %}
 
     </div>
+    {% comment %} Guest Login {% endcomment %}
+    {% if shop.checkout.guest_login %}{% endif %}
+    {% comment %} End Guest Login {% endcomment %}
   </div>
   {% comment %} for password recover form {% endcomment %}
   <div x-show="pwRecoverForm" class="max-w-md w-full space-y-8">

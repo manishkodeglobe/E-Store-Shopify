@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+div#sib-container{
+  background-color: #f6fbff!important;
+ }
+
+body{
+  display:flex; flex-direction:column; 
+}
+ 
 [x-cloak]{display: none!important;}
 
 /* 404 page css  */
@@ -15,10 +23,11 @@
 }
 
 /* Footter css */
-
- 
+.Sticky_navbar {
+  background-color: #f6fbff !important;
+}
 footer {
-  background-color: #ebeae6;
+  background-color: #f6fbff!important;
 }
 .footer_heading_title {
   padding-bottom: 20px;
