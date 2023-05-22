@@ -55,7 +55,23 @@
 
     </div>
     {% comment %} Guest Login {% endcomment %}
-    {% if shop.checkout.guest_login %}{% endif %}
+    {% if shop.checkout.guest_login %}
+
+      <hr class="my-12">
+      <div>
+        <h1 class="mt-6 text-center text-3xl font-bold">Continue as a guest</h1>
+      </div>
+
+      {% form 'guest_login' %}
+
+        <div>
+          <button type="submit" class="font-sm w-full px-4 py-2 font-medium text-white bg-gray-600 hover:bg-gray-900">Continue</button>
+        </div>
+      {% endform %}
+
+
+
+    {% endif %}
     {% comment %} End Guest Login {% endcomment %}
   </div>
   {% comment %} for password recover form {% endcomment %}

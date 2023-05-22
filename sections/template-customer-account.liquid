@@ -1,0 +1,10 @@
+<div class="container mx-auto py-16 px-4 sm:py-24 sm:px-6">
+
+  <h1 class="text-2xl font-bold text-gray-700">Account</h1>
+
+  <div class="md:flex block gap-4">
+    {% assign number_of_orders = customer.orders | size %}
+    {% if number_of_orders > 0 %}{% endif %}
+  </div>
+
+</div>
