@@ -1677,6 +1677,11 @@ video {
     margin-bottom: 4rem;
   }
 
+  .md\:my-12 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
   .md\:mr-20 {
     margin-right: 5rem;
   }
