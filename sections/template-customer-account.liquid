@@ -9,11 +9,19 @@
       <div class="my-6 md:my-12">
         <h2 class="text-xl font-bold text-gray-700">Orders history</h2>
 
-        {% paginate customer.orders by 12 %}
-          {% for order in customer.orders %}
-            {{ order.name }}
-          {% endfor %}
-        {% endpaginate %}
+        <div>
+
+          {% paginate customer.orders by 12 %}
+            {% for order in customer.orders %}
+              <div class="relative">
+
+                <div class="min-80 bg-gray-200 rounded-md  overflow-hidden lg:h-80"></div>
+
+
+              </div>
+            {% endfor %}
+          {% endpaginate %}
+        </div>
 
 
 
