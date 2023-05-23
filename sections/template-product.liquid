@@ -68,7 +68,7 @@
     </div>
     {% comment %} product form and informations {% endcomment %}
     <div class="product--information sticky top-10 p-2">
-     {% form 'product', product %}
+    {% form 'product', product %}
   <input type="hidden" name="id" value="{{ selected_variant.id }}">
   {% for block in section.blocks %}
     {% case block.type %}
@@ -138,7 +138,7 @@
           </div>
         </div>
         <!-- Show Replacement message -->
-        <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
+        <h class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h>
         <!-- END Custom Fields For Electronic Products -->
       {% when 'checkout_button' %}
         <button x-on:click="addToCart()" id="add-to-cart-button" type="button" class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2" {% if selected_variant.available == false %}disabled{% endif %}>
@@ -185,6 +185,7 @@
     });
   </script>
 {% endform %}
+
 
 
     </div>
