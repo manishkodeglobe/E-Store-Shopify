@@ -183,12 +183,12 @@
           {% render 'social-sharing' %}
         </div>
         {% comment %} end social sharring buttons {% endcomment %}
-       <script>
+        <script>
 $(function() {
   // Current Ajax request.
   var currentAjaxRequest = null;
 
-  // Add to cart using AJAX and update cart and drawer
+  // Add to cart using AJAX and open cart drawer
   $('#add-to-cart-button').click(function(e) {
     e.preventDefault();
     var form = $(this).closest('form');
@@ -198,55 +198,19 @@ $(function() {
     // Disable the button to prevent multiple clicks
     $(this).attr('disabled', 'disabled').text('Adding...');
 
-    // Abort any existing Ajax request
-    if (currentAjaxRequest !== null) {
-      currentAjaxRequest.abort();
-    }
-
-    // Make the Ajax request
-    currentAjaxRequest = $.ajax({
-      type: 'POST',
-      url: addToCartURL,
-      data: formData,
-      dataType: 'json',
-      success: function(itemData) {
-        // Enable the button
-        $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
-
-        // Open the cart drawer
-        $('.cart-drawer').addClass('open');
-
-        // Update the cart and drawer content
-        updateCartDrawer();
-      },
-      error: function(XMLHttpRequest, textStatus) {
-        // Enable the button
-        $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
-      }
-    });
+    $.post(addToCartURL, formData, function(itemData) {
+      // Enable the button
+      $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
+      
+      // Open the cart drawer
+      $('.cart-drawer').addClass('open');
+      
+      // Show the added product in the cart drawer
+      $('.cart-drawer').html(itemData);
+    }, 'json');
   });
-
-  // Function to update the cart and drawer content
-  function updateCartDrawer() {
-    var cartURL = '/cart';
-
-    // Make the Ajax request to get the updated cart content
-    $.ajax({
-      type: 'GET',
-      url: cartURL,
-      dataType: 'html',
-      success: function(data) {
-        // Update the cart content
-        $('.cart-content').html(data);
-      },
-      error: function(XMLHttpRequest, textStatus) {
-        // Handle the error
-      }
-    });
-  }
 });
 </script>
-
 
       {% endform %}
     </div>
