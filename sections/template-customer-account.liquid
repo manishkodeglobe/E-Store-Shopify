@@ -16,7 +16,15 @@
               <div class="relative">
 
                 <div class="min-80 bg-gray-200 rounded-md  overflow-hidden lg:h-80">
-                  {{ order.name }}
+
+                  {% if order.line_items.first.image %}
+                    <img
+                      src="{{ order.line_items.first.image | image_url}}"
+                      width="full"
+                      height="full"
+                      loading="lazy">
+                  {% endif %}
+
 
                 </div>
 
