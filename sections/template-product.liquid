@@ -184,7 +184,7 @@
         </div>
         {% comment %} end social sharring buttons {% endcomment %}
       {% endform %}
-    <script>
+   <script>
   $(function() {
     // Add to cart using AJAX and open cart drawer
     $('#add-to-cart-button').click(function(e) {
@@ -196,27 +196,26 @@
       // Disable the button to prevent multiple clicks
       $(this).attr('disabled', 'disabled').text('Adding...');
 
-      $.post(addToCartURL, formData, function() {
-        // Enable the button
-        $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
+      $.post(addToCartURL, formData)
+        .done(function(response) {
+          // Enable the button
+          $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
 
-        // Open the cart drawer
-        $('.cart-drawer').addClass('open');
+          // Open the cart drawer
+          Shopify.theme.jsAjaxCartDrawer.openDrawer();
 
-        // Update the cart content dynamically
-        updateCartContent();
-      });
+          // Update the cart content dynamically
+          Shopify.theme.jsAjaxCartDrawer.updateContent(response);
+        })
+        .fail(function(response) {
+          // Enable the button
+          $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
+          console.error(response);
+        });
     });
-
-    // Function to update the cart content dynamically
-    function updateCartContent() {
-      $.get('/cart.js', function(cart) {
-        // Update the cart content in the drawer
-        $('.cart-drawer').html(cart);
-      });
-    }
   });
 </script>
+
     </div>
   </div>
 </div>
