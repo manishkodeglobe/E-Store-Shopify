@@ -68,157 +68,176 @@
     </div>
     {% comment %} product form and informations {% endcomment %}
     <div class="product--information sticky top-10 p-2">
-      {% form 'product', product %}
-        <input
-          type="hidden"
-          name="id"
-          value="{{ selected_variant.id }}">
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'vendor' %}
-            {% comment %} show Vender {% endcomment %}
-            <div class="my-3">
-              <span class="text-xs text-gray-500">{{ product.vendor }}</span>
-            </div>
-            {% when 'title' %}
-              <div class="my-3">
-              {% comment %} Show Title {% endcomment %}
-              <h1 class="text-3xl text-gray-900">{{ product.title }}</h1>
-            </div>
-            {% when 'price' %}
-            {% comment %} Show Price {% endcomment %}
-            <div class="my-3">
-              <span class="text-base text-gray-500 line-through">{{ selected_variant.compare_at_price | money }}</span>
-              <span class="text-lg text-gray-500">{{ selected_variant.price | money }}</span>
-              {% if selected_variant.price < selected_variant.compare_at_price %}
-                <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4">Sale</span>
-              {% endif %}
-            </div>
-            {% when 'variant_selecter' %}
-            {% comment %} Show  variants  {% endcomment %}
-            <div class="my-3">
-              {% unless product.has_only_default_variant %}
-                <div data-url="{{ product.url }}" data-section="{{ section.id }}">
-                  {% for option in product.options_with_values %}
-                    <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
-                    <div class="my-2">
-                      <select
-                        name="options[{{ option.name | escape }}]"
-                        id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                        class="w-full border py-3 px-3">
-                        {% for value in option.values %}
-                          <option value="{{ variant.id }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
-                            {{ value }}
-                          </option>
-                        {% endfor %}
-                      </select>
-                    </div>
+     {% form 'product', product %}
+  <input
+    type="hidden"
+    name="id"
+    value="{{ selected_variant.id }}">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'vendor' %}
+      {% comment %} show Vender {% endcomment %}
+      <div class="my-3">
+        <span class="text-xs text-gray-500">{{ product.vendor }}</span>
+      </div>
+      {% when 'title' %}
+        <div class="my-3">
+        {% comment %} Show Title {% endcomment %}
+        <h1 class="text-3xl text-gray-900">{{ product.title }}</h1>
+      </div>
+      {% when 'price' %}
+      {% comment %} Show Price {% endcomment %}
+      <div class="my-3">
+        <span class="text-base text-gray-500 line-through">{{ selected_variant.compare_at_price | money }}</span>
+        <span class="text-lg text-gray-500">{{ selected_variant.price | money }}</span>
+        {% if selected_variant.price < selected_variant.compare_at_price %}
+          <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4">Sale</span>
+        {% endif %}
+      </div>
+      {% when 'variant_selecter' %}
+      {% comment %} Show  variants  {% endcomment %}
+      <div class="my-3">
+        {% unless product.has_only_default_variant %}
+          <div data-url="{{ product.url }}" data-section="{{ section.id }}">
+            {% for option in product.options_with_values %}
+              <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+              <div class="my-2">
+                <select
+                  name="options[{{ option.name | escape }}]"
+                  id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                  class="w-full border py-3 px-3">
+                  {% for value in option.values %}
+                    <option value="{{ variant.id }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                      {{ value }}
+                    </option>
                   {% endfor %}
-                </div>
-              {% endunless %}
-            </div>
-            {% comment %} End Varieants {% endcomment %}
-            {% when 'quantity' %}
-            {% comment %} Show Quantity {% endcomment %}
-            <div class="my-3">
-              <label for="quantity-{{ section.id }}">quantity</label>
-              <div class="in">
-                <input
-                  type="number"
-                  name="quantity"
-                  id="{{ section.id }}"
-                  value="1"
-                  min="1"
-                  class="w-full border px-3 py-3">
+                </select>
               </div>
-            </div>
-            {% when 'description' %}
-            {% comment %} Product Description {% endcomment %}
-            <p class="text-gray-500">{{ product.description }}</p>
-            <!-- Custome Fields For Electronic Products  -->
-            <style>
-              .SpecificationReading_button {
-                max-width: 30%;
-                text-align: center;
-                border: 1px solid black;
-                padding: 20px;
-                cursor: pointer;
-              }
-            </style>
-            <div class="my-5 Electronic_Items_Specifications" x-data="{ defaultHideData : false}">
-              <nav>
-                <div class="  px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData =  true">Read Specifications..</div>
-              </nav>
-              <div class="flex flex-col" x-show="defaultHideData">
-                {{ product.metafields.custom.electronic_product_specifications.value }}
-                <nav>
-                  <div class="px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData =   false">ReadLess Specifications..</div>
-                </nav>
-              </div>
-            </div>
-            <!-- Show Replacement mes -->
-            <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
-            <!--END Custome Fields For Electronic Products  -->
-            {% when 'checkout_button' %}
-            {% comment %} Product Add To Cart Button {% endcomment %}
-            <button
-              x-on:click="cartSideBar = true"
-              id="add-to-cart-button"
-              type="submit"
-              name="add"
-              class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2"
-              {% if selected_variant.available == false %}disabled{% endif %}>
-
-              {% if selected_variant.available %}
-                Add To Cart
-              {% else %}
-                Sold Out
-              {% endif %}
-            </button>
-        {% else %}
-          {% endcase %}
-        {% endfor %}
-        {% comment %} social sharring buttons {% endcomment %}
-        <div class="flex justify-center items-center">
-          {% render 'social-sharing' %}
+            {% endfor %}
+          </div>
+        {% endunless %}
+      </div>
+      {% comment %} End Variants {% endcomment %}
+      {% when 'quantity' %}
+      {% comment %} Show Quantity {% endcomment %}
+      <div class="my-3">
+        <label for="quantity-{{ section.id }}">quantity</label>
+        <div class="in">
+          <input
+            type="number"
+            name="quantity"
+            id="{{ section.id }}"
+            value="1"
+            min="1"
+            class="w-full border px-3 py-3">
         </div>
-        {% comment %} end social sharring buttons {% endcomment %}
-       <script>
-$(function() {
-  // Add to cart using AJAX and open cart drawer
-  $('#add-to-cart-button').click(function(e) {
-    e.preventDefault();
-    var form = $(this).closest('form');
-    var formData = form.serialize();
-    var addToCartURL = '/cart/add.js';
+      </div>
+      {% when 'description' %}
+      {% comment %} Product Description {% endcomment %}
+      <p class="text-gray-500">{{ product.description }}</p>
+      <!-- Custom Fields For Electronic Products  -->
+      <style>
+        .SpecificationReading_button {
+          max-width: 30%;
+          text-align: center;
+          border: 1px solid black;
+          padding: 20px;
+          cursor: pointer;
+        }
+      </style>
+      <div class="my-5 Electronic_Items_Specifications" x-data="{ defaultHideData : false}">
+        <nav>
+          <div class="px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData =  true">Read Specifications..</div>
+        </nav>
+        <div class="flex flex-col" x-show="defaultHideData">
+          {{ product.metafields.custom.electronic_product_specifications.value }}
+          <nav>
+            <div class="px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData =   false">Read Less Specifications..</div>
+          </nav>
+        </div>
+      </div>
+      <!-- Show Replacement message -->
+      <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
+      <!-- END Custom Fields For Electronic Products  -->
+      {% when 'checkout_button' %}
+      {% comment %} Product Add To Cart Button {% endcomment %}
+      <button
+        x-on:click.prevent="addToCart()"
+        id="add-to-cart-button"
+        type="submit"
+        name="add"
+        class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2"
+        {% if selected_variant.available == false %}disabled{% endif %}>
 
-    // Disable the button to prevent multiple clicks
-    $(this).attr('disabled', 'disabled').text('Adding...');
+        {% if selected_variant.available %}
+          Add To Cart
+        {% else %}
+          Sold Out
+        {% endif %}
+      </button>
+    {% else %}
+      {% endcase %}
+  {% endfor %}
+  {% comment %} social sharing buttons {% endcomment %}
+  <div class="flex justify-center items-center">
+    {% render 'social-sharing' %}
+  </div>
+  {% comment %} end social sharing buttons {% endcomment %}
+{% endform %}
 
-    $.post(addToCartURL, formData, function() {
-      // Enable the button
-      $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add to cart using AJAX and open cart drawer
+    function addToCart() {
+      var form = document.querySelector('#add-to-cart-button').closest('form');
+      var formData = new FormData(form);
+      var addToCartURL = '/cart/add.js';
 
-      // Open the cart drawer
-      $('.cart-drawer').addClass('open');
+      // Disable the button to prevent multiple clicks
+      document.querySelector('#add-to-cart-button').setAttribute('disabled', 'disabled');
+      document.querySelector('#add-to-cart-button').textContent = 'Adding...';
 
-      // Update the cart content dynamically
-      updateCartContent();
-    });
+      // Send AJAX request to add the product to the cart
+      fetch(addToCartURL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(response) {
+        // Enable the button
+        document.querySelector('#add-to-cart-button').removeAttribute('disabled');
+        document.querySelector('#add-to-cart-button').textContent = 'Add To Cart';
+
+        // Open the cart drawer
+        document.querySelector('.cart-drawer').classList.add('open');
+
+        // Update the cart content dynamically
+        updateCartContent();
+      })
+      .catch(function(error) {
+        console.error('Error adding product to cart:', error);
+      });
+    }
+
+    // Function to update the cart content dynamically
+    function updateCartContent() {
+      fetch('/cart')
+      .then(function(response) {
+        return response.text();
+      })
+      .then(function(cartContent) {
+        // Update the cart content in the drawer
+        document.querySelector('.cart-drawer').innerHTML = cartContent;
+      })
+      .catch(function(error) {
+        console.error('Error updating cart content:', error);
+      });
+    }
+
+    // Bind the addToCart function to the button click event
+    document.querySelector('#add-to-cart-button').addEventListener('click', addToCart);
   });
-
-  // Function to update the cart content dynamically
-  function updateCartContent() {
-    $.get('/cart', function(cartContent) {
-      // Update the cart content in the drawer
-      $('.cart-drawer').html(cartContent);
-    });
-  }
-});
 </script>
 
-
-      {% endform %}
     </div>
   </div>
 </div>
