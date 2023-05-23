@@ -1,8 +1,0 @@
-{
-    "layout": "false",
-    "sections": {
-        "mini-cart":{
-            "type":"template-mini-cart"
-        }
-    },"order": ["mini-cart"]
-}
