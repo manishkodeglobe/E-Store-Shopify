@@ -209,7 +209,7 @@ $(function() {
 
   // Function to update the cart content dynamically
   function updateCartContent() {
-    $.get('/cart', function(cartContent) {
+    $.get('/cart.js', function(cartContent) {
       // Update the cart content in the drawer
       $('.cart-drawer').html(cartContent);
     });
