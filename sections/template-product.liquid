@@ -194,28 +194,15 @@
       // Disable the button to prevent multiple clicks
       $(this).attr('disabled', 'disabled').text('Adding...');
   
-      $.ajax({
-        type: 'POST',
-        url: '/cart/add.js',
-        data: formData,
-        dataType: 'json',
-        success: function(itemData) {
-          // Enable the button
-          $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
+      Shopify.addItem(formData, function(itemData) {
+        // Enable the button
+        $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
   
-          // Open the cart drawer
-          Shopify.cartDrawer.open();
+        // Open the cart drawer
+        Shopify.cartDrawer.open();
   
-          // Update the cart content dynamically
-          Shopify.cartDrawer.updateContents(itemData);
-        },
-        error: function(XMLHttpRequest, textStatus) {
-          // Enable the button
-          $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
-  
-          // Handle the error, if any
-          console.log('Error adding item to cart: ' + textStatus);
-        }
+        // Update the cart content dynamically
+        Shopify.cartDrawer.updateContents(itemData);
       });
     });
   });
