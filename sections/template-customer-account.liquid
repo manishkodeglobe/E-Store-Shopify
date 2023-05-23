@@ -9,7 +9,7 @@
       <div class="my-6 md:my-12">
         <h2 class="text-xl font-bold text-gray-700">Orders history</h2>
 
-        <div>
+        <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 
           {% paginate customer.orders by 12 %}
             {% for order in customer.orders %}
@@ -19,7 +19,9 @@
 
                   {% if order.line_items.first.image %}
                     <img
+                      class="w-full h-full object-cover object-center"
                       src="{{ order.line_items.first.image | image_url}}"
+                      alt="{{ order.line_items.first.image.alt }}"
                       width="full"
                       height="full"
                       loading="lazy">
