@@ -15,7 +15,10 @@
             {% for order in customer.orders %}
               <div class="relative">
 
-                <div class="min-80 bg-gray-200 rounded-md  overflow-hidden lg:h-80"></div>
+                <div class="min-80 bg-gray-200 rounded-md  overflow-hidden lg:h-80">
+                  {{ order.name }}
+
+                </div>
 
 
               </div>
@@ -35,5 +38,4 @@
       </div>
     {% endif %}
   </div>
-
 </div>
