@@ -15,8 +15,9 @@
             {% for order in customer.orders %}
               <div class="relative">
 
-                <div class="min-80 bg-gray-200 rounded-md  overflow-hidden lg:h-80">
 
+                {% comment %} Order Images {% endcomment %}
+                <div class="min-80 bg-gray-200 rounded-md  overflow-hidden lg:h-80">
                   {% if order.line_items.first.image %}
                     <img
                       class="w-full h-full object-cover object-center"
@@ -25,9 +26,16 @@
                       width="full"
                       height="full"
                       loading="lazy">
+                  {% else %}
+                    {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-cover object-center' }}
                   {% endif %}
-
-
+                </div>
+                {% comment %} order Details {% endcomment %}
+                <div class="mt-4 flex items-start justify-between">
+                  <div>
+                    <h3 class="text-sm text-gray-700">{{ order.name | link_to: order.customer_url }}</h3>
+                  </div>
+                  <div></div>
                 </div>
 
 
