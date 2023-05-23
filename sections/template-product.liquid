@@ -206,21 +206,15 @@
 
           // Update the cart content dynamically
           Shopify.theme.jsAjaxCartDrawer.updateContent(response);
-
-          // Show success message
-          toastr.success('Product added to cart!');
         })
         .fail(function(response) {
           // Enable the button
           $('#add-to-cart-button').removeAttr('disabled').text('Add To Cart');
-
-          // Show error message
-          toastr.error('Failed to add product to cart.');
+          console.error(response);
         });
     });
   });
 </script>
-
 
     </div>
   </div>
