@@ -109,13 +109,9 @@
                       <select
                         name="options[{{ option.name | escape }}]"
                         id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                        class="w-full border py-3 px-3"
-                        value="{{ variant.id }}">
+                        class="w-full border py-3 px-3">
                         {% for value in option.values %}
-                          <option
-                            value="{{ variant.id }}"
-                            {% if option.selected_value == value %}selected="selected"{% endif %}
-                            value="{{ variant.id }}">
+                          <option value="{{ variant.id }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
                             {{ value }}
                           </option>
                         {% endfor %}
