@@ -30,9 +30,25 @@
   .product--information {
     height: fit-content;
   }
+
+  {% comment %} blinking animation {% endcomment %}
+ 
+.blink-hard {
+  animation: blinker 0.4s step-end infinite;
+ 
+}
+ 
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 </style>
 
+
+
 <div class="container mx-auto my-8">
+
   {% comment %} cart Side Bar {% endcomment %}
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -73,6 +89,26 @@
           type="hidden"
           name="id"
           value="{{ selected_variant.id }}">
+
+          {% comment %} tag for Best Saller and Trending Cloths {% endcomment %}
+          <div class="flex flex-col">
+                {% assign productTags = product.tags | join: '&' %}
+                {% if productTags contains 'Bestseller' %}
+                  <span class="text-violet-700  italic blink-hard">
+                Bestseller
+                </span>
+                {% endif %}
+
+                {% if productTags contains 'Trending' %}
+                <span class="text-violet-700  italic blink-hard">Trending</span>
+                </span>
+
+                {% endif %}
+          </div>
+
+  {% comment %}  end tag {% endcomment %}
+
+
 
         {% for block in section.blocks %}
           {% case block.type %}
