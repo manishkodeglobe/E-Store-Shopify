@@ -93,6 +93,7 @@
           {% comment %} tag for Best Saller and Trending Cloths {% endcomment %}
           <div class="flex flex-col">
                 {% assign productTags = product.tags | join: '&' %}
+                
                 {% if productTags contains 'Bestseller' %}
                   <span class="text-violet-700  italic blink-hard">
                 Bestseller
