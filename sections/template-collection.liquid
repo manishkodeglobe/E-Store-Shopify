@@ -32,14 +32,40 @@
   </div>
 
   {% comment %}End Shorting Filter {% endcomment %}
+  <!-- Creatting Filter For collections -->
+  <!-- Creatting Filter For collections -->
+  <!-- Creatting Filter For collections -->
+  <!-- Creatting Filter For collections -->
+  <!-- Creatting Filter For collections -->
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quibusdam ex est voluptatum distinctio laudantium harum nobis, accusamus, repudiandae iste quae sunt nam tempora odit asperiores. Perspiciatis dignissimos excepturi magnam.
+  {% assign inStockProducts = '' %}
+  {% assign outOfStockProducts = '' %}
+
+    {% for product in collection.products %}
+      {% if product.available %}
+      {% assign inStockProducts = inStockProducts | append: product_product: product %}
+    {% else %}
+      {% assign outOfStockProducts = outOfStockProducts | append: product_product: product %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign combinedProducts = inStockProducts | append: outOfStockProducts %}
+
+  {% for product in combinedProducts %}
+    {{ product.title }}
+    <!-- Display other product details -->
+  {% endfor %}
+
 
 
   <!-- Creatting Filter For collections -->
+  <!-- Creatting Filter For collections -->
+  <!-- Creatting Filter For collections -->
+  <!-- Creatting Filter For collections -->
+  <!-- Creatting Filter For collections -->
 
 
-
-  <div class=" block md:flex">
-    <div class="w-full md:w-1/4 min_and_max_amount_functionality filter_availablity_and_price">
+    <div class=" block md:flex"> <div class="w-full md:w-1/4 min_and_max_amount_functionality filter_availablity_and_price">
       <h1 class=" text-3xl mx-0 ">Filter:</h1>
       {% render 'product-page-filter' %}
     </div>
