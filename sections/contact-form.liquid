@@ -1,14 +1,14 @@
+<div class="form_title text-center">
+
+  {% if section.settings.title != blank %}
+    <h1 class="text-5xl text-center py-40 mb-8  bg-gray-700   text-white">
+      {{ section.settings.title }}
+    </h1>
+
+  {% endif %}
+</div>
 <div class="container mx-auto flex flex-col items center my-9   h-full justify-center ">
 
-  <div class="form_title text-center">
-
-    {% if section.settings.title != blank %}
-      <h1 class="text-3xl my-8 md:my-16 font-medium text-center">
-        {{ section.settings.title }}
-      </h1>
-
-    {% endif %}
-  </div>
 
   {% form 'contact' %}
     <div class="max-w-6xl mx-auto justify-center flex-1 items-center px-4">

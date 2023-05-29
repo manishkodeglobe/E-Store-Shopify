@@ -1,8 +1,11 @@
+<div class="blog_title_category ">
+  <h1 class="text-5xl text-center py-40 mb-8  bg-gray-700   text-white">All Blogs / {{ blog.title }}</h1>
+</div>
 <div class="py-8 container mx-auto">
   {% paginate blog.articles by section.settings.blog_show_perpage %}
-    <div class="blog_title_category text-center text-3xl">
-      <h1>All Blogs / {{ blog.title }}</h1>
-    </div>
+
+    <h1 class="">{{ section.settings.title }}</h1>
+
 
     <div class="grid grid-cols-1 md:grid-cols-3 my-9 gap-7">
       {% for article in blog.articles %}
@@ -67,6 +70,12 @@
         "label": "read more blog",
         "default": "Read more.."
       }
+    ],
+    "presets": [
+      {
+        "name": "Blog Page Settings"
+      }
+
     ]
   }
 {% endschema %}

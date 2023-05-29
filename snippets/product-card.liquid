@@ -1,13 +1,32 @@
-<div class="w-full">
+ 
+   
+<div class="w-full" x-data="{  lastImg: false , firstImg: true}">
   <div class="border bg-white shadow-lg rounded-lg overflow-hidden" >
+ 
+ 
  
 
     <a href="{{ product_product.url }}">
       {% if product_product.featured_image %}
         <div class="h-100 overflow-hidden">
           <img
+
+          @mouseover="lastImg = true , firstImg = false"
+        
+          x-show="firstImg"
             src="{{ product_product.featured_image | image_url }}"
             class="h-full w-full object-cover    transition duration-1000 ease-in-out hover:scale-105 transform product_image_width"
+            height="full"
+            width="full"
+            loading="lazy">
+            
+            <img
+
+            x-show="lastImg"
+            @mouseover.away = "lastImg = false ,firstImg = true "
+      
+            src="{{ product_product.images.last | image_url }}"
+            class="last_image h-full w-full object-cover    transition duration-1000 ease-in-out hover:scale-105 transform product_image_width"
             height="full"
             width="full"
             loading="lazy">
@@ -17,23 +36,22 @@
         {{ placeholder_images | placeholder_svg_tag: 'h-full w-full object-cover' }}
       {% endif %}
     </a>
-
     <div class="flex p-5 justify-between">
       <div class="product_name"8
         <span class="text-sm text-gray-400">{{ product_product.vendor }}</span>
         <a href="{{ product_product.url }}">
           <h1 class="text-gray-700 uppercase font-medium">{{ product_product.title | truncatewords: 3 }}</h1>
         </a>
-
       </div>
       <div class="Product_price">
-
         <p class="text-gray-500">{{ product_product.price | money }}</p>
- 
-
+              {% comment %} Stock Availabilit {% endcomment %}
+              {% if product_product.available == true %}
+              in sock
+             {% else %}
+               out of stock
+             {% endif %}
       </div>
     </div>
- 
   </div>
-
 </div>
