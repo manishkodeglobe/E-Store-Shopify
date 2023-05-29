@@ -219,10 +219,7 @@ div#sib-container {
   border: none !important;
 }
 
-form#sib-form {
-  width: 70%;
-  border-bottom: 1px solid #80808047;
-}
+ 
 
 div#success-message {
   width: 70%;

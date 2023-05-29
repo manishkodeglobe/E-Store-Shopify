@@ -4,8 +4,7 @@
       <div class="md:flex">
         <div class="w-full md:w-1/2">
           <p class="e-mailling_paragraph">{{ section.settings.footer_form_paragraph }}</p>
-          <div class="NewsLetter_form">
-            {% comment %} <div class="form_wrapper ">
+          <div class="NewsLetter_form">{% comment %} <div class="form_wrapper ">
             <input
             class="email_input_homepage"
             type="email"
@@ -15,7 +14,7 @@
             type="submit"
             value="JOIN">
             </div> {% endcomment %}
-            {% section 'newsletter' %}
+            {% comment %} {% section 'newsletter' %} {% endcomment %}
           </div>
         </div>
         <div class="w-1/3">
