@@ -139,25 +139,19 @@
             {% when 'variant_selecter' %}
             <!-- Show Variants -->
             <div class="my-3">
-              {% unless product.has_only_default_variant %}
-                <div data-url="{{ product.url }}" data-section="{{ section.id }}">
-                  {% for option in product.options_with_values %}
-                    <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
-                    <div class="my-2">
-                      <select
-                        name="options[{{ option.name | escape }}]"
-                        id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                        class="w-full border py-3 px-3">
-                        {% for value in option.values %}
-                          <option value="{{ variant.id }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
-                            {{ value }}
-                          </option>
-                        {% endfor %}
-                      </select>
-                    </div>
-                  {% endfor %}
-                </div>
-              {% endunless %}
+              <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+                    <option
+                      {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                      value="{{ variant.id }}"
+                    >
+                        {{ variant.title }} <span>  {% if variant.inventory_quantity < 2 %}: ONLY 1 AVAILABLE{% endif %}</span>
+                    </option>
+                  {% endif %}
+              
+                {% endfor %}
+              </select>
             </div>
 
             {% when 'quantity' %}

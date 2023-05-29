@@ -22,20 +22,23 @@
                       {% else %}
                         {% assign collection_image = collections.products.first.image %}
                       {% endif %}
+                      <div class=" overflow-hidden">
+                        <img
+                          class="w-full hover:scale-110  duration-200 transition"
+                          src="{{ collection_image | image_url }}"
+                          height="full"
+                          width="full"
+                          loading="lazy"></div>
 
-                      <img
-                        class="w-full"
-                        src="{{ collection_image | image_url }}"
-                        height="full"
-                        width="full"
-                        loading="lazy">
-                      <div class="p-6">
-                        <a href="{{ collection.url }}" class="text-xl hover:underline">{{ collection.title }}</a>
-                        <p class="text-sm py-4">{{ collection.description }}</p>
-                      </div>
-                      <div class="flex items-center justify-center">
-                        <a href="{{ collection.url }}" class="text-white py-3 px-8 bg-black hover:bg-white hover:text-black border transition  duration-300 ">SHOP NOW
-                        </a>
+                      <div class="collection_list_card_details">
+                        <div class="p-6">
+                          <a href="{{ collection.url }}" class="text-xl hover:underline">{{ collection.title }}</a>
+                          <p class="text-sm py-4">{{ collection.description }}</p>
+                        </div>
+                        <div class="flex items-center justify-center">
+                          <a href="{{ collection.url }}" class="text-white py-3 px-8 bg-black hover:bg-white hover:text-black border transition  duration-300 ">SHOP NOW
+                          </a>
+                        </div>
                       </div>
 
                     </div>

@@ -1,0 +1,90 @@
+<style>
+  .Brand_logo {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    display: block;
+  }
+</style>
+
+<div class="image_width_logos">
+  <div class="container mx-auto">
+    <div class="heading-withsmall-slider">
+      <div class="image-with_text_headings text-center max-w-xl mx-auto pb-5">
+        <small>{{ section.settings.title }}</small>
+        <h1 class="font-bold  text-2xl  mb-4">{{ section.settings.description }}</h1>
+      </div>
+      <div class="Brand_logo Logos text-center flex">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img
+              class="mx-auto py-9 hover:scale-125 transition duration-100"
+              src="{{ 'icon-1.png' | asset_url }}"
+              width="full"
+              height="full"
+              loading="lazy"></div>
+          <div class="swiper-slide">
+            <img
+              class="mx-auto py-9 hover:scale-125 transition duration-100"
+              src="{{ 'icon-2.png' | asset_url }}"
+              width="full"
+              height="full"
+              loading="lazy"></div>
+          <div class="swiper-slide">
+            <img
+              class="mx-auto py-9 hover:scale-125 transition duration-100"
+              src="{{ 'icon-3.png' | asset_url }}"
+              width="full"
+              height="full"
+              loading="lazy"></div>
+          <div class="swiper-slide">
+            <img
+              class="mx-auto py-9 hover:scale-125 transition duration-100"
+              src="{{ 'icon-4.png' | asset_url }}"
+              width="full"
+              height="full"
+              loading="lazy"></div>
+          <div class="swiper-slide">
+            <img
+              class="mx-auto py-9 hover:scale-125 transition duration-100"
+              src="{{ 'icon-5.png' | asset_url }}"
+              width="full"
+              height="full"
+              loading="lazy"></div>
+          <div class="swiper-slide">
+            <img
+              class="mx-auto py-9 hover:scale-150 transition duration-150"
+              src="{{ 'icon-6.png' | asset_url }}"
+              width="full"
+              height="full"
+              loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "second-level-banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "title",
+        "default": "In the press"
+
+      }, {
+        "type": "text",
+        "id": "description",
+        "label": "Description",
+        "default": "“Move over Prada: Millennials can’t get enough of Confiance”"
+      }
+    ]
+  }
+{% endschema %}

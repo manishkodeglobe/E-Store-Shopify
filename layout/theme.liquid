@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
+    {% comment %} Aos {% endcomment %}
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
 
@@ -42,6 +43,12 @@
     <script src="{{ 'flexslider-init.js' | asset_url }}" async></script>
     <script src="{{ 'application.js' | asset_url }}" async></script>
     <script src="{{ 'add-cart.js' | asset_url }}" async></script>
+    {% comment %} Aos {% endcomment %}
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
 
     {% comment %} alpin js start {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -95,6 +102,39 @@
         },
 
 // Navigation arrows
+        navigation: {
+          nextEl: '.featured_collection_slider_nav_next',
+          prevEl: '.featured_collection_slider_nav_prev'
+        }
+      });
+    </script>
+    {% comment %} Logoes Swipper Brand {% endcomment %}
+    <script>
+      const Brandlogo = new Swiper('.Brand_logo', {
+
+
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView: 1,
+        autoplay: 5000,
+        speed: 800,
+
+        breakpoints: {
+          '552': {
+            slidesPerView: 3,
+            spaceBetween: 40
+          },
+
+          '762': {
+            slidesPerView: 4,
+            spaceBetween: 40
+          },
+          '1200': {
+            slidesPerView: 5,
+            spaceBetween: 40
+          }
+
+        },
         navigation: {
           nextEl: '.featured_collection_slider_nav_next',
           prevEl: '.featured_collection_slider_nav_prev'

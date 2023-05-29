@@ -39,13 +39,17 @@
         ]
       }
     },
-    "second-level-banner": {
-      "type": "second-level-banner",
+    "Logo-slider": {
+      "type": "Logo-slider",
       "settings": {
         "title": "In the press",
         "description": "“Move over Prada: Millennials can’t get enough of Confiance”"
       }
+    },
+    "ctc":{
+      "type":"ctc"
     }
+  
   },
   "order": [
     "banner",
@@ -54,6 +58,7 @@
     "SpecificList-collection-prd",
     "homepage-specific-collection-2",
     "list-collections",
-    "second-level-banner"
+    "Logo-slider",
+    "ctc"
   ]
 }
