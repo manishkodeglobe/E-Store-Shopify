@@ -45,13 +45,6 @@
         "title": "In the press",
         "description": "“Move over Prada: Millennials can’t get enough of Confiance”"
       }
-    },
-    "d00ba5de-276b-44ce-8cb0-719f1cf2c25a": {
-      "type": "template-blog",
-      "settings": {
-        "blog_show_perpage": 6,
-        "Read_more_button": "Read more.."
-      }
     }
   },
   "order": [
@@ -61,7 +54,6 @@
     "SpecificList-collection-prd",
     "homepage-specific-collection-2",
     "list-collections",
-    "second-level-banner",
-    "d00ba5de-276b-44ce-8cb0-719f1cf2c25a"
+    "second-level-banner"
   ]
 }
