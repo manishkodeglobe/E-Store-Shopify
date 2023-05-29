@@ -3,7 +3,6 @@
     "banner": {
       "type": "banner",
       "settings": {
- 
       }
     },
     "featured-collection": {
@@ -21,6 +20,16 @@
         "subtitle": "— ioki.makoi"
       }
     },
+    "SpecificList-collection-prd": {
+      "type": "HomePage-specific-collection-craousal",
+      "settings": {
+      }
+    },
+    "homepage-specific-collection-2": {
+      "type": "homepage-specific-collection-2",
+      "settings": {
+      }
+    },
     "list-collections": {
       "type": "template-list-collections",
       "settings": {
@@ -30,24 +39,20 @@
         ]
       }
     },
-
-    "SpecificList-collection-prd":{
-      "type": "HomePage-specific-collection-craousal",
-      "settings": {
-
-      }
-    },
-
-    "homepage-specific-collection-2":{
-      "type":"homepage-specific-collection-2"
-    },
     "second-level-banner": {
       "type": "second-level-banner",
       "settings": {
         "title": "In the press",
         "description": "“Move over Prada: Millennials can’t get enough of Confiance”"
       }
-    } 
+    },
+    "d00ba5de-276b-44ce-8cb0-719f1cf2c25a": {
+      "type": "template-blog",
+      "settings": {
+        "blog_show_perpage": 6,
+        "Read_more_button": "Read more.."
+      }
+    }
   },
   "order": [
     "banner",
@@ -56,8 +61,7 @@
     "SpecificList-collection-prd",
     "homepage-specific-collection-2",
     "list-collections",
-  
-    
-    "second-level-banner"
+    "second-level-banner",
+    "d00ba5de-276b-44ce-8cb0-719f1cf2c25a"
   ]
 }
