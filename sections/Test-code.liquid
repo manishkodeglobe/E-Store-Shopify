@@ -1,8 +1,15 @@
-{% for product in section.settings.test.products %}
-  <div class="swiper-slide">
-    {% render 'product-card', product_product: product %}
-  </div>
-{% endfor %}
+<div class="flex">
+  {% assign avalable_product = section.settings.test.products %}
+
+  {% for product in avalable_product %}
+    {% if product.available %}
+      <div class="">
+        {% render 'product-card', product_product: product %}
+      </div>
+
+    {% endif %}
+  {% endfor %}
+</div>
 
 
 {% schema %}
@@ -17,3 +24,21 @@
     ]
   }
 {% endschema %}
+
+
+
+{% comment %} 
+Show Only Available products
+
+<div class="flex">
+{% assign avalable_product = section.settings.test.products | where: 'available' %}
+{% for product in avalable_product %}
+<div class="">
+{% render 'product-card', product_product: product %}
+</div>
+{% endfor %}
+</div>
+
+
+
+{% endcomment %}
