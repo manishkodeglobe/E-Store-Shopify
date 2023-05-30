@@ -190,9 +190,7 @@
               </nav>
               <div class="flex flex-col" x-show="defaultHideData">
                 {{ product.metafields.custom.electronic_product_specifications.value }}
-                <nav>
-                  <div class="px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData = false">Read Less Specifications..</div>
-                </nav>
+            
               </div>
             </div>
 
@@ -282,10 +280,9 @@
 <div class="Recetlty_view">
   {% render 'recently-viewed' %}
 </div>
+{% comment %}end  Recently View Products {% endcomment %}
 
 
-
-{% comment %}  {% endcomment %}
 
 {% comment %} single product slider {% endcomment %}
 <script>
