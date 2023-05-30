@@ -1,347 +1,160 @@
-<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 
-{% assign selected_variant = product.selected_or_first_available_variant %}
-
-<style>
-  .Swiper_Button_For_Product_Slide_prev::after {}
-  .Swiper_Button_For_Product_Slide_next::after {}
-  .Swiper_Button_For_Product_Slide_prev {
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    cursor: pointer;
-  }
-  .Swiper_Button_For_Product_Slide_next {
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    right: 0;
-    cursor: pointer;
-  }
-  .swiper-pagination {
-    color: black;
-    bottom: 0 !important;
-  }
-  .swiper-pagination-bullet-active {
-    background: black !important;
-  }
-
-  .product--information {
-    height: fit-content;
-  }
-
-  {% comment %} blinking animation {% endcomment %}
- 
-.blink-hard {
-  animation: blinker 0.4s step-end infinite;
- 
-}
- 
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-</style>
-
-
-
-
-<div class="container mx-auto my-8">
-
-  {% comment %} cart Side Bar {% endcomment %}
-
- 
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-    {% comment %} Product Media {% endcomment %}
-    <div class="product--medias">
-      <div class="hidden md:block">
-        {% for media in product.media %}
-          <div class="h-100 overflow-hidden p-4">
-            {% render 'product-media', media: media %}
-          </div>
-        {% endfor %}
-      </div>
-      <div class="md:hidden">
-        <div class="swiper h-94">
-          <div class="swiper-wrapper">
-            {% for media in product.media %}
-              <div class="swiper-slide">
-                <div class="h-full overflow-hidden">
-                  {% render 'product-media', media: media %}
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="Swiper_Button_For_Product_Slide_prev">
-            {% render 'leftarrow' %}
-          </div>
-          <div class="Swiper_Button_For_Product_Slide_next">
-            {% render 'rightarrow' %}
-          </div>
-        </div>
-      </div>
-    </div>
-    {% comment %} product form and informations {% endcomment %}
-    <div class="product--information sticky top-10 p-2">
-      {% form 'product', product, id: 'product-form' %}
-        <input
-          type="hidden"
-          name="id"
-          value="{{ selected_variant.id }}">
-
-          {% comment %} tag for Best Saller and Trending Cloths {% endcomment %}
-          <div class="flex flex-col">
-                {% assign productTags = product.tags | join: '&' %}
-                
-                {% if productTags contains 'Bestseller' %}
-                  <span class="text-violet-700  italic blink-hard">
-                Bestseller
-                </span>
+    <script>
+    var cartCount = {{ cart.item_count }};
+        $(document)
+            .ready(function() {
+                {% if cart.item_count != 0 %}
+                $('#cart-number')
+                    .replaceWith('<a href="/cart" id="cart-number">View cart(' + cartCount + ')</a>');
                 {% endif %}
-
-                {% if productTags contains 'Trending' %}
-                <span class="text-violet-700  italic blink-hard">Trending</span>
-                </span>
-
-                {% endif %}
-          </div>
-
-  {% comment %}  end tag {% endcomment %}
-
-
-
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'vendor' %}
-            <!-- Show Vendor -->
-            <div class="my-3">
-              <span class="text-xs text-gray-500">{{ product.vendor }}</span>
-            </div>
-
-            {% when 'title' %}
-            <!-- Show Title -->
-            <div class="my-3">
-              <h1 class="text-3xl text-gray-900">{{ product.title }}</h1>
-            </div>
-
-            {% when 'price' %}
-            <!-- Show Price -->
-            <div class="my-3">
-              <span class="text-base text-gray-500 line-through">{{ selected_variant.compare_at_price | money }}</span>
-              <span class="text-lg text-gray-500">{{ selected_variant.price | money }}</span>
-              {% if selected_variant.price < selected_variant.compare_at_price %}
-                <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4">Sale</span>
-              {% endif %}
-            </div>
-
-            {% when 'variant_selecter' %}
-            <!-- Show Variants -->
-            <div class="my-3">
-              <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
-                {% for variant in product.variants %}
-                  {% if variant.available %}
-                    <option
-                      {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
-                      value="{{ variant.id }}"
-                    >
-                        {{ variant.title }} <span>  {% if variant.inventory_quantity < 2 %}: ONLY 1 AVAILABLE{% endif %}</span>
-                    </option>
-                  {% endif %}
-              
-                {% endfor %}
-              </select>
-            </div>
-
-            {% when 'quantity' %}
-            <!-- Show Quantity -->
-            <div class="my-3">
-              <label for="quantity-{{ section.id }}">quantity</label>
-              <div class="in">
-                <input
-                  type="number"
-                  name="quantity"
-                  id="{{ section.id }}"
-                  value="1"
-                  min="1"
-                  class="w-full border px-3 py-3">
-              </div>
-            </div>
-
-            {% when 'description' %}
-            <!-- Product Description -->
-            <p class="text-gray-500">{{ product.description }}</p>
-
-            <!-- Custom Fields For Electronic Products -->
-            <style>
-              .SpecificationReading_button {
-                
-                text-align: center;
-                border: 1px solid black;
-                padding: 15px;
-                cursor: pointer;
-              }
-            </style>
-
-            <div class="my-5 Electronic_Items_Specifications" x-data="{ defaultHideData: false }">
-              <nav>
-                <div class="px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData = !  defaultHideData">Read Specifications..</div>
-              </nav>
-              <div class="flex flex-col" x-show="defaultHideData">
-                {{ product.metafields.custom.electronic_product_specifications.value }}
-            
-              </div>
-            </div>
-
-            <!-- Show Replacement message -->
-            <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
-
-            <!-- End Custom Fields For Electronic Products -->
-
-            {% when 'checkout_button' %}
-            <!-- Product Add To Cart Button -->
-            <button
-              x-on:click="addToCart()"
-              id="add-to-cart-button"
-              type="button"
-              class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2"
-              {% if selected_variant.available == false %}disabled{% endif %}>
-              {% if selected_variant.available %}
-                Add To Cart
-              {% else %}
-                Out of Stock
-              {% endif %}
-            </button>
-
-        {% else %}
-          {% endcase %}
-        {% endfor %}
-
-        <!-- Social Sharing Buttons -->
-        <div class="flex justify-center items-center">
-          {% render 'social-sharing' %}
-        </div>
-        <!-- End Social Sharing Buttons -->
-
-        <script>
-          function addToCart() {
-            var form = document.getElementById('product-form');
-            var formData = new FormData(form);
-            var addToCartURL = '/cart/add.js';
-            var addToCartButton = document.getElementById('add-to-cart-button');
-
-// Disable the button to prevent multiple clicks
-            addToCartButton.disabled = true;
-            addToCartButton.textContent = 'Adding...';
-
-            fetch(addToCartURL, {
-              method: 'POST',
-              body: formData
-            }).then(function(response) {
-              return response.json();
-            }).then(function(data) {
-
-// Enable the button
-              addToCartButton.disabled = false;
-              addToCartButton.textContent = 'Add To Cart';
-
-// Open the cart drawer
-              document.querySelector('.cart-drawer').classList.add('open');
-
-// Update the cart content dynamically
-              updateCartContent();
-            }).catch(function(error) {
-              console.error('Error:', error);
+                $('.modal--overlay')
+                    .on('click', function() {
+                        var overlay = $('.modal--overlay');
+                        closeModal(overlay);
+                    });
             });
-          }
-
-          function updateCartContent() {
-            fetch('/cart.js').then(function(response) {
-              return response.text();
-            }).then(function(cartContent) {
-
-// Update the cart content in the drawer
-              document.querySelector('.cart-drawer').innerHTML = cartContent;
-            }).catch(function(error) {
-              console.error('Error:', error);
+        function addItem(form_id) {
+            $.ajax({
+                type: 'POST',
+                url: '/cart/add.js',
+                dataType: 'json',
+                data: $('#' + form_id)
+                    .serialize(),
+                success: addToCartOk,
+                error: addToCartFail
             });
-          }
-        </script>
-      {% endform %}
+        }
+        function showCart() {
+            $.ajax({
+                type: 'POST',
+                url: '/cart/add.js',
+                dataType: 'json',
+                data: $('#' + form_id)
+                    .serialize(),
+                success: addToCartOk,
+                error: addToCartFail
+            });
+        }
+        function addToCartOk(product) {
+            cartCount++;
+            $('.modal')
+                .html('<span class="close" id="close">✕</span>' + product.title + ' was added to the cart!');
+            $('#cart-number')
+                .replaceWith('<a href="/cart" id="cart-number">View cart(' + cartCount + ')</a>');
+            openModal();
+        }
+        function addToCartFail(obj, status) {
+            $('.modal')
+                .html('<span class="close" id="close">✕</span> The product you are trying to add is out of stock.');
+            openModal();
+        }
+        //Modal Actions
+        //center modal based on window size
+        function centerModal() {
+            var modal = $('.modal.open');
+            var mWidth = modal.outerWidth();
+            var mHeight = modal.outerHeight();
+            var width = $(window)
+                .width();
+            var height = $(window)
+                .height();
+            if ((width % 1) != 0) {
+                width = Math.round(width);
+            }
+            if ((height % 1) != 0) {
+                height = Math.round(height);
+            }
+            var topPos = (height / 2) - (mHeight / 2);
+            var leftPos = (width / 2) - (mWidth / 2);
+            modal.css({top: topPos, left: leftPos});
+        }
+        //open modal and overlay
+        function openModal() {
+            $('.modal')
+                .removeClass('hidden')
+                .addClass('open');
+            $('.modal--overlay')
+                .removeClass('hidden')
+                .addClass('open');
+            $('body')
+                .css('overflow', 'hidden');
+            centerModal();
+        }
+        //close modal and overlay
+        function closeModal(overlay) {
+            $(overlay)
+                .addClass('hidden')
+                .removeClass('open');
+            $('.modal.open')
+                .addClass('hidden')
+                .removeClass('open');
+            $('body')
+                .css('overflow', 'auto');
+        }
+    </script>
 
-    </div>
-  </div>
-</div>
+    <style>
+        .modal {
+            max-width: 575px;
+            background: white;
+            border: 5px solid #111;
+            padding: 50px 65px;
+            position: fixed;
+            z-index: 1000;
+        }
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .modal--overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    
+    
+    <a id="cart-number" href="/cart"></a>
 
+<div class="modal hidden" id="download-modal"></div>
+<div class="modal--overlay hidden"></div>
 
+<!--product form-->
+            <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-{{ product.handle }}">
 
-{% comment %} Recently View Products {% endcomment %}
-<div class="Recetlty_view">
-  {% render 'recently-viewed' %}
-</div>
-{% comment %}end  Recently View Products {% endcomment %}
+                <!--product add to cart-->
+                <button
+                        class="single-product__add-to-cart u-b6"
+                        type="submit"
+                        name="add"
+                        data-add-to-cart
+                        {% unless current_variant.available %}disabled="disabled"{% endunless %}
+                        onclick="addItem('add-to-cart-{{ product.handle }}'); return false;">
 
+                    <span data-add-to-cart-text>
+                        {% if current_variant.available %}
+                            {{ 'products.product.add_to_cart' | t }}
+                        {% else %}
+                            {{ 'products.product.sold_out' | t }}
+                        {% endif %}
+                    </span>
 
+                </button>
+                <!--end product add to cart-->
 
-{% comment %} single product slider {% endcomment %}
-<script>
-  const swiper_product = new Swiper('.swiper', {
-    direction: 'horizontal',
-
-    pagination: {
-      el: '.swiper-pagination'
-    },
-
-    navigation: {
-      prevEl: '.Swiper_Button_For_Product_Slide_prev',
-      nextEl: '.Swiper_Button_For_Product_Slide_next'
-    }
-  });
-</script>
-
-
-
-{% schema %}
-  {
-    "name": " Product",
-    "blocks": [
-      {
-        "type": "vendor",
-        "name": "vendor",
-        "limit": 1
-      },
-      {
-        "type": "title",
-        "name": "title",
-        "limit": 1
-      },
-      {
-        "type": "price",
-        "name": "price",
-        "limit": 1
-      },
-      {
-        "type": "variant_selecter",
-        "name": "variant selector",
-        "limit": 1
-      }, {
-        "type": "quantity",
-        "name": "Quantity",
-        "limit": 1
-      }, {
-        "type": "description",
-        "name": "description",
-        "limit": 1
-      }, {
-        "type": "checkout_button",
-        "name": "checkout button",
-        "limit": 1
-      }
-
-    ]
-
-  }
-{% endschema %}
+            </form>
+            <!--end product form-->
