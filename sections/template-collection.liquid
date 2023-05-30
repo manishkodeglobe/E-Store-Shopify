@@ -46,12 +46,22 @@
     <!-- Creatting Filter For collections -->
     {% paginate collection.products by 9 %}
       <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6  px-4">
-        {% for product in collection.products %}
+        {% assign avalaible_p = collection.products | where: 'available', true %}
+        {% assign not_avalaible_p = collection.products | where: 'available', false %}
+
+
+        {% comment %} Show Avalable {% endcomment %}
+        {% for product in avalaible_p %}
           {% render 'product-card', product_product: product %}
         {% else %}
           <div class="font-bold flex justify-center items-center">
-            <h1>There Are No Product In Your Collection</h1>
+            <h1>There Are No Product In Your Collections</h1>
           </div>
+        {% endfor %}
+
+        {% comment %} Show Out Of Stock {% endcomment %}
+        {% for product in not_avalaible_p %}
+          {% render 'product-card', product_product: product %}
         {% endfor %}
       </div>
     </div>

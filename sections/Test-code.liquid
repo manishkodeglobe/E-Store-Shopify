@@ -1,13 +1,19 @@
 <div class="flex">
-  {% assign avalable_product = section.settings.test.products %}
-
+  {% assign avalable_product = section.settings.test.products | where: "available", true %}
+  {% assign not_avalable_product = section.settings.test.products | where: "available", false %}
+  {% comment %} Show Available Products {% endcomment %}
   {% for product in avalable_product %}
-    {% if product.available %}
-      <div class="">
-        {% render 'product-card', product_product: product %}
-      </div>
+    <div class="">
+      {% render 'product-card', product_product: product %}
+    </div>
+  {% endfor %}
+  {% comment %} show out of stock {% endcomment %}
+  {% for product in not_avalable_product %}
 
-    {% endif %}
+    <div class="">
+      {% render 'product-card', product_product: product %}
+    </div>
+
   {% endfor %}
 </div>
 
