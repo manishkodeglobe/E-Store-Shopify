@@ -52,6 +52,10 @@
 
   {% comment %} cart Side Bar {% endcomment %}
 
+  <div class="cart-drawer">
+    {% render 'cart-drawer' %}
+  </div>
+
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
     {% comment %} Product Media {% endcomment %}
     <div class="product--medias">
@@ -176,10 +180,10 @@
             <!-- Custom Fields For Electronic Products -->
             <style>
               .SpecificationReading_button {
-                max-width: 30%;
+                
                 text-align: center;
                 border: 1px solid black;
-                padding: 20px;
+                padding: 15px;
                 cursor: pointer;
               }
             </style>
