@@ -50,7 +50,7 @@
         {% assign not_avalaible_p = collection.products | where: 'available', false %}
 
 
-        {% comment %} Show Avalable {% endcomment %}
+        {% comment %} Show Avalable products {% endcomment %}
         {% for product in avalaible_p %}
           {% render 'product-card', product_product: product %}
         {% else %}
@@ -59,7 +59,7 @@
           </div>
         {% endfor %}
 
-        {% comment %} Show Out Of Stock {% endcomment %}
+        {% comment %} Show Out Of Stock product{% endcomment %}
         {% for product in not_avalaible_p %}
           {% render 'product-card', product_product: product %}
         {% endfor %}
