@@ -48,10 +48,14 @@
     },
     "ctc":{
       "type":"ctc"
+    },
+    "test-code":{
+      "type": "Test-code"
     }
   
   },
   "order": [
+    "test-code",
     "banner",
     "featured-collection",
     "image-n-text",

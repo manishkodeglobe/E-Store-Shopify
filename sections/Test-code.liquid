@@ -1,0 +1,19 @@
+{% for product in section.settings.test.products %}
+  <div class="swiper-slide">
+    {% render 'product-card', product_product: product %}
+  </div>
+{% endfor %}
+
+
+{% schema %}
+  {
+    "name": "test",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "test",
+        "label": "Test collection"
+      }
+    ]
+  }
+{% endschema %}
