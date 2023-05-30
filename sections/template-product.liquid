@@ -187,15 +187,13 @@
             </style>
 
             <div class="my-5 Electronic_Items_Specifications" x-data="{ defaultHideData: false }">
-              {% if product.metafields.value %}
+              {% if product.metafields.custom.electronic_product_specifications.value != blank %}
               <nav>
                 <div class="px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData = !  defaultHideData">Read Specifications..</div>
               </nav>
               <div class="flex flex-col" x-show="defaultHideData">
                 {{ product.metafields.custom.electronic_product_specifications.value }}
-            
               </div>
-                
               {% endif %}
             </div>
 
