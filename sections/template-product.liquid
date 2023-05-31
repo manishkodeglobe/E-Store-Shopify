@@ -198,7 +198,9 @@
             </div>
 
             <!-- Show Replacement message -->
-            <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
+            {% if product.metafields.custom.replacement_date_policy.value != blank %}
+                <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
+            {% endif %}
 
             <!-- End Custom Fields For Electronic Products -->
 
@@ -226,53 +228,7 @@
           {% render 'social-sharing' %}
         </div>
         <!-- End Social Sharing Buttons -->
-
-
-        {% comment %} Add to cart Ajax {% endcomment %}
-        <script>
-          function addToCart() {
-            var form = document.getElementById('product-form');
-            var formData = new FormData(form);
-            var addToCartURL = '/cart/add.js';
-            var addToCartButton = document.getElementById('add-to-cart-button');
-
-// Disable the button to prevent multiple clicks
-            addToCartButton.disabled = true;
-            addToCartButton.textContent = 'Adding...';
-
-            fetch(addToCartURL, {
-              method: 'POST',
-              body: formData
-            }).then(function(response) {
-              return response.json();
-            }).then(function(data) {
-
-// Enable the button
-              addToCartButton.disabled = false;
-              addToCartButton.textContent = 'Add To Cart';
-
-// Open the cart drawer
-              document.querySelector('.cart-drawer').classList.add('block');
-
-// Update the cart content dynamically
-              updateCartContent();
-            }).catch(function(error) {
-              console.error('Error:', error);
-            });
-          }
-
-          function updateCartContent() {
-            fetch('/cart.js').then(function(response) {
-              return response.text();
-            }).then(function(cartContent) {
-
-// Update the cart content in the drawer
-              document.querySelector('.cart-drawer').innerHTML = cartContent;
-            }).catch(function(error) {
-              console.error('Error:', error);
-            });
-          }
-        </script>
+ 
       {% endform %}
 
     </div>

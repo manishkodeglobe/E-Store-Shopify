@@ -14,6 +14,7 @@
 
     {% comment %} flex slider css links {% endcomment %}
     {{ 'flexslider.css' | asset_url | stylesheet_tag }}
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.0/flexslider.css">
 
     {% comment %} swipper slider {% endcomment %}
@@ -22,6 +23,9 @@
 
     {% comment %} Aos {% endcomment %}
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    {% comment %} ajaxyfy {% endcomment %}
+    {{ 'liquid-ajax-cart.css' | asset_url | stylesheet_tag }}
 
 
 
@@ -40,6 +44,17 @@
 
 
     {% section 'footer' %}
+    {% comment %} AjaxyFy {% endcomment %}
+    {% render 'cart-drawer' %}
+    <script type="application/json" data-ajax-cart-initial-state>{{ cart | json }}</script>
+    <script type="module">
+      import '{{ 'liquid-ajax-cart.js' | asset_url }}';
+    </script>
+
+    {% comment %} AjaxyFy {% endcomment %}
+
+
+
     <script src="{{ 'flexslider-init.js' | asset_url }}" async></script>
     <script src="{{ 'application.js' | asset_url }}" async></script>
     <script src="{{ 'add-cart.js' | asset_url }}" async></script>
@@ -48,15 +63,14 @@
     <script>
       AOS.init();
     </script>
-
-
     {% comment %} alpin js start {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     {% comment %} alpin js end {% endcomment %}
+    {% comment %} jquery {% endcomment %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>''
 
     {% comment %} flex slider and j query {% endcomment %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
     <script src="../assets/jquery.flexslider-min.js"></script>
 
     <script>
