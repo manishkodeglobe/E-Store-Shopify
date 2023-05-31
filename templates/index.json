@@ -1,5 +1,11 @@
 {
   "sections": {
+    "test-code": {
+      "type": "Test-code",
+      "settings": {
+        "test": ""
+      }
+    },
     "banner": {
       "type": "banner",
       "settings": {
@@ -46,13 +52,16 @@
         "description": "“Move over Prada: Millennials can’t get enough of Confiance”"
       }
     },
-    "ctc":{
-      "type":"ctc"
+    "ctc": {
+      "type": "ctc",
+      "settings": {
+      }
     },
-    "test-code":{
-      "type": "Test-code"
+    "ef15f265-8a87-4d40-88a3-74cd1ac00aa2": {
+      "type": "newsletter",
+      "settings": {
+      }
     }
-  
   },
   "order": [
     "test-code",
@@ -63,6 +72,7 @@
     "homepage-specific-collection-2",
     "list-collections",
     "Logo-slider",
-    "ctc"
+    "ctc",
+    "ef15f265-8a87-4d40-88a3-74cd1ac00aa2"
   ]
 }
