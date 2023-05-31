@@ -206,18 +206,22 @@
 
             {% when 'checkout_button' %}
             <!-- Product Add To Cart Button -->
-            <button
-              x-on:click="addToCart()"
-              id="add-to-cart-button"
-              type="button"
-              class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2"
-              {% if selected_variant.available == false %}disabled{% endif %}>
+             
+            
+      
+           
+          <button  class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2" type="submit" name="add" id="AddToCart"  {% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary{% endif %}">
+              {% if selected_variant.available == false %}disabled{% endif %}
               {% if selected_variant.available %}
                 Add To Cart
               {% else %}
                 Out of Stock
-              {% endif %}
-            </button>
+              {% endif %} 
+          </button>
+          <div data-ajax-cart-messages="form"></div>
+          {% if section.settings.enable_payment_button %}
+            {{ form | payment_button }}
+          {% endif %}
 
         {% else %}
           {% endcase %}

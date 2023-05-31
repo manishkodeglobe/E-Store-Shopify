@@ -45,7 +45,7 @@
 
     {% section 'footer' %}
     {% comment %} AjaxyFy {% endcomment %}
-    {% render 'cart-drawer' %}
+
     <script type="application/json" data-ajax-cart-initial-state>{{ cart | json }}</script>
     <script type="module">
       import '{{ 'liquid-ajax-cart.js' | asset_url }}';
@@ -89,6 +89,7 @@
     {% comment %} swipper slider {% endcomment %}
     {% comment %} swipper slider {% endcomment %}
     {% comment %} swipper slider {% endcomment %}<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"> </script>
+
 
     <script>
       const swiper = new Swiper('.swiper', {

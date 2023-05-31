@@ -1,6 +1,23 @@
-#shopify-section-header {
-	padding-top: 47px;
+my-cart__items { 
+	opacity: 1;
+	transition: opacity .2s;
+  }
+   
+  /* Make the area with controls visually disabled */
+  body.js-ajax-cart-request-in-progress .my-cart__items {
+	opacity: .7;
+  }
+
+  .product_remove_button_side_bar {
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
+
+
+
+
 
 .section-featured-product {
   border: 1px solid rgba(27,30,47,.15);

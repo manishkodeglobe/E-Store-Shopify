@@ -10,47 +10,44 @@
   </ul>
 </div>
 {% comment %} Show tag   {% endcomment %}
-<div class="Tags mt-6">
-  <ul class="border shadow-xl px-7 py-5">
-    <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Tag Lists</h1>
+{% comment %} <div class="Tags mt-6">
+<ul class="border shadow-xl px-7 py-5">
+<h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Tag Lists</h1>
 
-    {% if collection.all_tags.size > 0 %}
-
-
-
-      <ul class="list-group list-group-flush">
-        {% for tag in collection.all_tags %}
-          {% if current_tags contains tag %}
-            <li class="text-2xl">
-              {{ tag | link_to_remove_tag: tag }}
-            </li>
-          {% else %}
-            <li class="text-2xl">
-              {{ tag | link_to_tag: tag }}
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+{% if collection.all_tags.size > 0 %}
 
 
-    {% endif %}
-  </ul>
+
+<ul class="list-group list-group-flush">
+{% for tag in collection.all_tags %}
+{% if current_tags contains tag %}
+<li class="text-2xl">
+{{ tag | link_to_remove_tag: tag }}
+</li>
+{% else %}
+<li class="text-2xl">
+{{ tag | link_to_tag: tag }}
+</li>
+{% endif %}
+{% endfor %}
+</ul>
+
+
+{% endif %}
+</ul>
 </div>
-{% comment %} Show Vendors {% endcomment %}
-<div class="Vendors mt-6">
-  <ul class="border shadow-xl px-7 py-5">
-    <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Vendor
-    </h1>
-    {% for vendor in collection.all_vendors %}
-      <li class=" text-2xl">
-        <a href="">
-          {{ vendor }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
-
-{% comment %} Show Availabilyty{% endcomment %}
+{% endcomment %}{% comment %} Show Vendors {% endcomment %}
+{% comment %} <div class="Vendors mt-6"> <ul class="border shadow-xl px-7 py-5">
+<h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Vendor
+</h1>
+{% for vendor in collection.all_vendors %}
+<li class=" text-2xl">
+<a href="">
+{{ vendor }}</a>
+</li>
+{% endfor %}
+</ul>
+</div> {% endcomment %}{% comment %} Show Availabilyty{% endcomment %}
 {% comment %} <div class="Availability mt-6">
 <ul class="border shadow-xl px-7 py-5">
 <h1 class=" text-base text-zinc-700 font-bold uppercase pb-4">Availability</h1>
