@@ -59,12 +59,6 @@
         "number_of_product_show": 6
       }
     },
-    "98f91cfb-edaf-48b7-b369-71da40bca94e": {
-      "type": "contact-form",
-      "settings": {
-        "title": "Contact Us"
-      }
-    },
     "0c9bc044-1d8e-4f1b-8546-c7fe06c82515": {
       "type": "newsletter",
       "settings": {
@@ -74,7 +68,6 @@
   "order": [
     "template_product",
     "aabd6cc0-9d26-4cf4-b695-1044eb8faa1b",
-    "98f91cfb-edaf-48b7-b369-71da40bca94e",
     "0c9bc044-1d8e-4f1b-8546-c7fe06c82515"
   ]
 }
