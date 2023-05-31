@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.image_category{
+  height: 650px;
+}
 div#sib-container{
   background-color: #f6fbff!important;
  }
