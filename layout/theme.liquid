@@ -25,9 +25,9 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     {% comment %} ajaxyfy {% endcomment %}
-    {{ 'liquid-ajax-cart.css' | asset_url | stylesheet_tag }}
-    {% comment %} Swatch {% endcomment %}
-    {{ 'Swatch.css.liquid' | asset_url | stylesheet_tag }}
+    {{ 'liquid-ajax-cart.css' | asset_url | stylesheet_tag }}{% comment %} Swatch {% endcomment %}
+
+    {% comment %} Jquery Cdn {% endcomment %}<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"> </script>
 
 
 
@@ -275,8 +275,5 @@
   {% render 'autocomplete-search' %}
 
 
-
-
-{% include 'swymSnippet' %}
 
 </body></html>

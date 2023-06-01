@@ -43,7 +43,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
       </style>
       <script>
         $(window).load(function() {
-          $('.selector-wrapper:eq(                                                  {{ option_index }} )').hide();
+          $('.selector-wrapper:eq(                            {{ option_index }} )').hide();
         });
       </script>
       {% assign downcased_option = swatch | downcase %}
@@ -102,10 +102,10 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
               <label for="swatch-{{ option_index }}-{{ value | handle }}" style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.' | append: file_extension | asset_url }})">
                 <img
                   class="crossed-out"
-                  src="{{ 'soldout.png' | asset_url | image_url }}"
+                  src="{{ 'soldout.png' | asset_url }}"
                   height="full"
                   width="full"
-                  loading="lazy">
+                  loading="lazy" />
               </label>
             {% else %}
               <label for="swatch-{{ option_index }}-{{ value | handle }}">
@@ -115,14 +115,14 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
                   src="{{ 'soldout.png' | asset_url }}"
                   height="full"
                   width="full"
-                  loading="lazy">>
+                  loading="lazy" />
               </label>
             {% endif %}
           </div>
         {% endunless %}
         {% if variant.available %}
           <script>
-            jQuery('.swatch[data-option-index="                                   {{ option_index }} "] .{{ value | handle }}')
+            jQuery('.swatch[data-option-index="                  {{ option_index }} "] .{{ value | handle }}')
               .removeClass('soldout')
               .addClass('available')
               .find(':radio')

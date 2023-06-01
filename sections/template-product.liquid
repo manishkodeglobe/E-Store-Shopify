@@ -31,20 +31,20 @@
     height: fit-content;
   }
 
-  {% comment %} blinking animation {% endcomment %}
- 
-.blink-hard {
-  animation: blinker 0.4s step-end infinite;
- 
-}
- 
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-</style>
+  {% comment %}
+    blinking animation{% endcomment %}
 
+  .blink-hard {
+    animation: blinker 0.4s step-end infinite;
+
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
 
 
 
@@ -52,7 +52,7 @@
 
   {% comment %} cart Side Bar {% endcomment %}
 
- 
+
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
     {% comment %} Product Media {% endcomment %}
@@ -89,81 +89,101 @@
     <div class="product--information sticky top-10 p-2">
       {% form 'product', product, id: 'product-form' %}
         <input
-          type="hidden"
+        type="hidden"
           name="id"
           value="{{ selected_variant.id }}">
 
-          {% comment %} tag for Best Saller and Trending Cloths {% endcomment %}
-          <div class="flex flex-col">
-                {% assign productTags = product.tags | join: '&' %}
-                
-                {% if productTags contains 'Bestseller' %}
-                  <span class="text-violet-700  italic blink-hard">
-                Bestseller
-                </span>
-                {% endif %}
+        {% comment %} tag for Best Saller and Trending Cloths {% endcomment %}
+        <div class="flex flex-col">
+          {% assign productTags = product.tags | join: '&' %}
 
-                {% if productTags contains 'Trending' %}
-                <span class="text-violet-700  italic blink-hard">Trending</span>
-                </span>
+          {% if productTags contains 'Bestseller' %}
+            <span class="text-violet-700  italic blink-hard">
+              Bestseller
+            </span>
+          {% endif %}
 
-                {% endif %}
+          {% if productTags contains 'Trending' %}
+            <span class="text-violet-700  italic blink-hard">Trending</span>
+          </span>
+
+        {% endif %}
+      </div>
+
+      {% comment %}  end tag {% endcomment %}
+
+
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'vendor' %}
+          <!-- Show Vendor -->
+          <div class="my-3">
+            <span class="text-xs text-gray-500">{{ product.vendor }}</span>
           </div>
 
-  {% comment %}  end tag {% endcomment %}
+          {% when 'title' %}
+          <!-- Show Title -->
+          <div class="my-3">
+            <h1 class="text-3xl text-gray-900">{{ product.title }}</h1>
+          </div>
+
+          {% when 'price' %}
+          <!-- Show Price -->
+          <div class="my-3">
+            <span class="text-base text-gray-500 line-through">{{ selected_variant.compare_at_price | money }}</span>
+            <span class="text-lg text-gray-500">{{ selected_variant.price | money }}</span>
+            {% if selected_variant.price < selected_variant.compare_at_price %}
+              <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4">Sale</span>
+            {% endif %}
+          </div>
+
+          {% when 'variant_selecter' %}
+          <!-- Show Variants -->
+          {% comment %} <div class="my-3">
+          <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
+          {% for variant in product.variants %}
+          {% if variant.available %}
+          <option
+          {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+          value="{{ variant.id }}"
+          >
+          {{ variant.title }} <span>  {% if variant.inventory_quantity < 2 %}: ONLY 1 AVAILABLE{% endif %}</span>
+          </option>
+          {% endif %}
+
+          {% endfor %}
+          </select>
+          </div>   {% endcomment %}
 
 
+          {% comment %} Swatches {% endcomment %}
 
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'vendor' %}
-            <!-- Show Vendor -->
-            <div class="my-3">
-              <span class="text-xs text-gray-500">{{ product.vendor }}</span>
-            </div>
 
-            {% when 'title' %}
-            <!-- Show Title -->
-            <div class="my-3">
-              <h1 class="text-3xl text-gray-900">{{ product.title }}</h1>
-            </div>
+          <div class="my-3 "> 
+          <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
+            {% for variant in product.variants %}
+            {% if variant.available %}
+            <option
+            {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+            value="{{ variant.id }}"
+            >
+            {{ variant.title }} <span>  {% if variant.inventory_quantity < 2 %}: ONLY 1 AVAILABLE{% endif %}</span>
+            </option>
+            {% endif %}
+  
+            {% endfor %}
+            </select>
+            {% if product.available and product.variants.size > 1 %}
+              {% render 'swatch' for product.options as swatch %}
+            {% endif %}
 
-            {% when 'price' %}
-            <!-- Show Price -->
-            <div class="my-3">
-              <span class="text-base text-gray-500 line-through">{{ selected_variant.compare_at_price | money }}</span>
-              <span class="text-lg text-gray-500">{{ selected_variant.price | money }}</span>
-              {% if selected_variant.price < selected_variant.compare_at_price %}
-                <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4">Sale</span>
-              {% endif %}
-            </div>
-
-            {% when 'variant_selecter' %}
-            <!-- Show Variants -->
-            {% comment %} <div class="my-3">
-              <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
-                {% for variant in product.variants %}
-                  {% if variant.available %}
-                    <option
-                      {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
-                      value="{{ variant.id }}"
-                    >
-                        {{ variant.title }} <span>  {% if variant.inventory_quantity < 2 %}: ONLY 1 AVAILABLE{% endif %}</span>
-                    </option>
-                  {% endif %}
-              
-                {% endfor %}
-              </select>
-            </div> {% endcomment %}
-            {% comment %} Swatches {% endcomment %}
-            <div class="my-3">
-              {% if product.available and product.variants.size > 1 %}
-                {% render 'swatch' for product.options as swatch %}
-              {% endif %}
-            </div>
+          </div> 
  
-            <!-- Show Quantity -->
-            {% when 'quantity' %}
+ 
+ 
+ {% comment %} show Quantity {% endcomment %}
+ {% when 'quantity' %}
             <div class="my-3">
               <label for="quantity-{{ section.id }}">quantity</label>
               <div class="in">
@@ -184,7 +204,7 @@
             <!-- Custom Fields For Electronic Products -->
             <style>
               .SpecificationReading_button {
-                
+
                 text-align: center;
                 border: 1px solid black;
                 padding: 15px;
@@ -194,40 +214,47 @@
 
             <div class="my-5 Electronic_Items_Specifications" x-data="{ defaultHideData: false }">
               {% if product.metafields.custom.electronic_product_specifications.value != blank %}
-              <nav>
-                <div class="px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData = !  defaultHideData">Read Specifications..</div>
-              </nav>
-              <div class="flex flex-col" x-show="defaultHideData">
-                {{ product.metafields.custom.electronic_product_specifications.value }}
-              </div>
+                <nav>
+                  <div class="px-2 my-5 SpecificationReading_button" x-on:click="defaultHideData = !  defaultHideData">Read Specifications..</div>
+                </nav>
+                <div class="flex flex-col" x-show="defaultHideData">
+                  {{ product.metafields.custom.electronic_product_specifications.value }}
+                </div>
               {% endif %}
             </div>
 
             <!-- Show Replacement message -->
             {% if product.metafields.custom.replacement_date_policy.value != blank %}
-                <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
+              <h1 class="my-5 text-xl">{{ product.metafields.custom.replacement_date_policy.value }}</h1>
             {% endif %}
 
             <!-- End Custom Fields For Electronic Products -->
 
             {% when 'checkout_button' %}
             <!-- Product Add To Cart Button -->
-             
-            
-      
-           
-          <button  class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2" type="submit" name="add" id="AddToCart"  {% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary{% endif %}">
+
+
+
+            <button
+              class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 duration-2 rounded-sm my-2"
+              type="submit"
+              name="add"
+              id="AddToCart"
+              {% if section.settings.enable_payment_button and product.selling_plan_groups == empty %}
+              btn--secondary
+              {% endif %}
+              ">
               {% if selected_variant.available == false %}disabled{% endif %}
               {% if selected_variant.available %}
                 Add To Cart
               {% else %}
                 Out of Stock
-              {% endif %} 
-          </button>
-          <div data-ajax-cart-messages="form"></div>
-          {% if section.settings.enable_payment_button %}
-            {{ form | payment_button }}
-          {% endif %}
+              {% endif %}
+            </button>
+            <div data-ajax-cart-messages="form"></div>
+            {% if section.settings.enable_payment_button %}
+              {{ form | payment_button }}
+            {% endif %}
 
         {% else %}
           {% endcase %}
@@ -238,7 +265,7 @@
           {% render 'social-sharing' %}
         </div>
         <!-- End Social Sharing Buttons -->
- 
+
       {% endform %}
 
     </div>
@@ -314,3 +341,185 @@
 
   }
 {% endschema %}
+
+
+<style>
+  /* 
+   Swatches Styles
+*/
+
+  {% assign width = '50px' %}
+  {% assign height = '35px' %}
+  .swatch {
+    margin: 1em 0;
+  }
+  /* Label */
+  .swatch .header {
+    margin: 0.5em 0;
+  }
+  /* Hide radio buttons.*/
+  .swatch input {
+    display: none;
+  }
+  .swatch label {
+    /* Rounded corners */
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    /* To give width and height */
+    float: left;
+    /* Color swatches contain no text so they need to have a width. */
+    min-width: {{ width }}
+     !important;
+    height: {{ height }}
+     !important;
+    /* No extra spacing between them */
+    margin: 0;
+    /* The border when the button is not selected */
+    border: #ccc 1px solid;
+    /* Background color */
+    background-color: #ddd;
+    /* Styling text */
+    font-size: 13px;
+    text-align: center;
+    line-height: {{ height }}
+    ;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .swatch-element label {
+    padding: 0 10px;
+  }
+  .color.swatch-element label {
+    padding: 0;
+  }
+  /* Styling selected swatch */
+  /* Slightly raised */
+  .swatch input:checked + label {
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    border-color: transparent;
+  }
+  .swatch .swatch-element {
+    float: left;
+    -webkit-transform: translateZ(0); /* webkit flicker fix */
+    -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
+    /* Spacing between buttons */
+    margin: 0 10px 10px 0;
+    /* To position the sold out graphic and tooltip */
+    position: relative;
+  }
+  /* Image with the cross in it */
+  .crossed-out {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .swatch .swatch-element .crossed-out {
+    display: none;
+  }
+  .swatch .swatch-element.soldout .crossed-out {
+    display: block;
+  }
+  .swatch .swatch-element.soldout label {
+    filter: alpha(opacity=60); /* internet explorer */
+    -khtml-opacity: 0.6; /* khtml, old safari */
+    -moz-opacity: 0.6; /* mozilla, netscape */
+    opacity: 0.6; /* fx, safari, opera */
+  }
+  /* Tooltips */
+  .swatch .tooltip {
+    text-align: center;
+    background: gray;
+    color: #fff;
+    bottom: 100%;
+    padding: 10px;
+    display: block;
+    position: absolute;
+    width: 100px;
+    left: {{ width | remove: 'px' | to_number | divided_by: 2 | minus: 50 | plus: 2 }}
+    px;
+    margin-bottom: 15px;
+    /* Make it invisible by default */
+    filter:alpha(opacity=0);
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+    visibility: hidden;
+    /* Animations */
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    z-index: 10000;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .swatch .tooltip:before {
+    bottom: -20px;
+    content: " ";
+    display: block;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+  /* CSS triangle */
+  .swatch .tooltip:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-top: solid gray 10px;
+    bottom: -10px;
+    content: " ";
+    height: 0;
+    left: 50%;
+    margin-left: -13px;
+    position: absolute;
+    width: 0;
+  }
+  .swatch .swatch-element:hover .tooltip {
+    filter:alpha(opacity=100);
+    -khtml-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  .swatch.error {
+    background-color: #E8D2D2 !important;
+    color: #333 !important;
+    padding: 1em;
+    border-radius: 5px;
+  }
+  .swatch.error p {
+    margin: 0.7em 0;
+  }
+  .swatch.error p:first-child {
+    margin-top: 0;
+  }
+  .swatch.error p:last-child {
+    margin-bottom: 0;
+  }
+  .swatch.error code {
+    font-family: monospace;
+  }
+</style>
