@@ -26,6 +26,8 @@
 
     {% comment %} ajaxyfy {% endcomment %}
     {{ 'liquid-ajax-cart.css' | asset_url | stylesheet_tag }}
+    {% comment %} Swatch {% endcomment %}
+    {{ 'Swatch.css.liquid' | asset_url | stylesheet_tag }}
 
 
 
@@ -44,11 +46,36 @@
 
 
     {% section 'footer' %}
+
+    {% comment %} Swatches {% endcomment %}
+    <script>
+      jQuery(function() {
+        jQuery('.swatch :radio').change(function() {
+          var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+          var optionValue = jQuery(this).val();
+          jQuery(this)
+            .closest('form')
+            .find('.single-option-selector')
+            .eq(optionIndex)
+            .val(optionValue)
+            .trigger('change');
+        });
+      });
+    </script>
+
+
+
     {% comment %} AjaxyFy {% endcomment %}
 
     <script type="application/json" data-ajax-cart-initial-state>{{ cart | json }}</script>
     <script type="module">
       import '{{ 'liquid-ajax-cart.js' | asset_url }}';
+    </script>
+
+    {% comment %} cart popup {% endcomment %}
+    <script type="module">
+      import { configureCart } from '{{ "liquid-ajax-cart-v1.11.0.js" | asset_url }}';
+      configureCart('addToCartCssClass', [ 'js-my-mini-cart-open', 3000 ]);
     </script>
 
     {% comment %} AjaxyFy {% endcomment %}

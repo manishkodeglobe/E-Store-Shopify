@@ -140,7 +140,7 @@
 
             {% when 'variant_selecter' %}
             <!-- Show Variants -->
-            <div class="my-3">
+            {% comment %} <div class="my-3">
               <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
                 {% for variant in product.variants %}
                   {% if variant.available %}
@@ -154,10 +154,16 @@
               
                 {% endfor %}
               </select>
+            </div> {% endcomment %}
+            {% comment %} Swatches {% endcomment %}
+            <div class="my-3">
+              {% if product.available and product.variants.size > 1 %}
+                {% render 'swatch' for product.options as swatch %}
+              {% endif %}
             </div>
-
-            {% when 'quantity' %}
+ 
             <!-- Show Quantity -->
+            {% when 'quantity' %}
             <div class="my-3">
               <label for="quantity-{{ section.id }}">quantity</label>
               <div class="in">
