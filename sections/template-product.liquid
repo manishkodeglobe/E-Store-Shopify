@@ -140,50 +140,24 @@
 
           {% when 'variant_selecter' %}
           <!-- Show Variants -->
-          {% comment %} <div class="my-3">
-          <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
-          {% for variant in product.variants %}
-          {% if variant.available %}
-          <option
-          {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
-          value="{{ variant.id }}"
-          >
-          {{ variant.title }} <span>  {% if variant.inventory_quantity < 2 %}: ONLY 1 AVAILABLE{% endif %}</span>
-          </option>
-          {% endif %}
+         <div class="my-3">
+            <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
+              {% for variant in product.variants %}
+                {% if variant.available %}
+                  <option
+                    {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                    value="{{ variant.id }}"
+                    >
+                    {{ variant.title }} <span>  {% if variant.inventory_quantity < 2 %}: ONLY 1 AVAILABLE{% endif %}</span>
+                  </option>
+                {% endif %}
 
-          {% endfor %}
-          </select>
-          </div>   {% endcomment %}
-
-
-          {% comment %} Swatches {% endcomment %}
-
-
-          <div class="my-3 "> 
-          <select id="product-select-{{ product.id }}" name="id" class="w-full border py-3 px-3">
-            {% for variant in product.variants %}
-            {% if variant.available %}
-            <option
-            {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
-            value="{{ variant.id }}"
-            >
-            {{ variant.title }} <span>  {% if variant.inventory_quantity < 2 %}: ONLY 1 AVAILABLE{% endif %}</span>
-            </option>
-            {% endif %}
-  
-            {% endfor %}
+              {% endfor %}
             </select>
-            {% if product.available and product.variants.size > 1 %}
-              {% render 'swatch' for product.options as swatch %}
-            {% endif %}
+          </div>  
 
-          </div> 
- 
- 
- 
- {% comment %} show Quantity {% endcomment %}
- {% when 'quantity' %}
+            {% comment %} show Quantity {% endcomment %}
+            {% when 'quantity' %}
             <div class="my-3">
               <label for="quantity-{{ section.id }}">quantity</label>
               <div class="in">

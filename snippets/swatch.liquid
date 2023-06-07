@@ -43,7 +43,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
       </style>
       <script>
         $(window).load(function() {
-          $('.selector-wrapper:eq(                            {{ option_index }} )').hide();
+          $('.selector-wrapper:eq(                             {{ option_index }} )').hide();
         });
       </script>
       {% assign downcased_option = swatch | downcase %}
@@ -122,7 +122,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
         {% endunless %}
         {% if variant.available %}
           <script>
-            jQuery('.swatch[data-option-index="                  {{ option_index }} "] .{{ value | handle }}')
+            jQuery('.swatch[data-option-index="                   {{ option_index }} "] .{{ value | handle }}')
               .removeClass('soldout')
               .addClass('available')
               .find(':radio')
